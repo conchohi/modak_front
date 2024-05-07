@@ -1,3 +1,5 @@
+import React from "react";
+
 function MainCard({camp}){
     return(
         <div className="flex w-1/2 items-center justify-center bg-gray-100">
