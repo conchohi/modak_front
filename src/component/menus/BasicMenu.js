@@ -14,50 +14,9 @@ function BasicMenu(){
                     <img className="w-60 ms-5" src="/img/logo.png" alt="logo image"/>
                 </Link>
             </div>
-
-            {/* <div className="hidden sm:flex w-3/4 justify-end p-4 text-sm mt-3 mr-5">
-                <ul className="flex w-full justify-end">
-                    
-                    <li className="mr-3 w-[45px] text-center">
-                        <Link to="/join" className="flex flex-col justify-center"><FaUserPlus size="25" className="mx-auto"/>JOIN</Link>
-                    </li>
-                    
-                    <li className="mr-3 w-[45px] text-center">
-                        <Link to="/login" className="flex flex-col justify-center"><MdLogin size="25" className="mx-auto"/>LOGIN</Link>
-                    </li>
-                    <li className="w-[45px] text-center">
-                        <Dropdown menuIcon={<FaUser size="25"/>} menuName="MY" 
-                        menus={[{title:"마이페이지", link:"/mypage"},
-                            {title:"회원정보 수정", link:"/mypage"},
-                            {title:"즐겨찾기", link:"/mypage"}
-                            ]}
-                        />
-                    </li>
-                </ul>
-            </div> */}
-            {/* <div className="hidden sm:flex w-3/4 justify-end p-2 text-sm mt-3 mr-5">
-                <ul className="flex w-full justify-end">
-                    <li className="mr-3 inline-block font-semibold">
-                        <Link to="/login" className="px-4 py-1  flex flex-col justify-center">로그인</Link>
-                    </li>
-                    <li className="mr-3 inline-block font-semibold">
-                        <Link to="/join" className="px-4 py-1 flex flex-col justify-center">회원가입</Link>
-                    </li>
-                    
-
-                    <li className="px-4 py-1 inline-block font-semibold">
-                        <Dropdown menuName="마이페이지" 
-                        menus={[{title:"마이페이지", link:"/mypage"},
-                            {title:"회원정보 수정", link:"/mypage"},
-                            {title:"즐겨찾기", link:"/mypage"}
-                            ]}
-                        />
-                    </li>
-                </ul>
-            </div> */}
             
 
-                <div class="hidden w-3/4 justify-end p-2 text-sm sm:block me-5 font-bold">
+                <div class="hidden w-3/4 justify-end p-2 text-base sm:block me-5 font-bold">
                     <ul class="flex flex-row justify-end space-x-8">
                         <li>
                             <Link to="/" class="block rounded p-2 text-gray-700 hover:bg-gray-50 hover:text-blue-700">
@@ -65,12 +24,12 @@ function BasicMenu(){
                             </Link>
                         </li>
                         <li>
-                            <Link to="/" class="block rounded p-2 text-gray-700 hover:bg-gray-50 hover:text-blue-700">
+                            <Link to="/join" class="block rounded p-2 text-gray-700 hover:bg-gray-50 hover:text-blue-700">
                                 회원가입
                             </Link>
                         </li>
                         <li>
-                            <Link to="/" class="block rounded p-2 text-gray-700 hover:bg-gray-50 hover:text-blue-700">
+                            <Link to="/login" class="block rounded p-2 text-gray-700 hover:bg-gray-50 hover:text-blue-700">
                                 로그인
                             </Link>
                         </li>
