@@ -1,19 +1,18 @@
 import React, {useState, useEffect} from "react";
 import WeatherToday from "./WeatherToday";
-function WeatherInfo(regionNum){
-    const [weather, setWeather] = useState(null)
-    // useEffect(()=>{
-    //     //api 넣기
-    //     console.log('hi')
-    // }, regionNum)
-
+import WeatherWeek from "./WeatherWeek";
+function WeatherInfo({weatherData}){
+    /*
+        weatherData = {
+            region : , today : {highTemp: , lowTemp, description, temp}, 
+            week : [{highTemp : , lowTemp : , description : , date :},  {}, {}, ..., {} ]
+        }
+    */
     return(
         <>
-            <WeatherToday/>
+            <WeatherToday region= {weatherData.region} data={weatherData.today}/>
             <hr/>
-            <div>
-                오늘(수) 목 금 토 일 월 화
-            </div>
+            <WeatherWeek data={weatherData.week}/>
         </>
     )
 }
