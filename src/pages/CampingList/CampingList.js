@@ -3,7 +3,9 @@ import SearchBar from "./SearchBar";
 import SideNav from "./SideNav";
 import CampingFinder from "./CampingFinder";
 import TrendSlider from "./TrendSlider"; // TrendSlider 컴포넌트 임포트
-
+import TopMenu from "../../component/menus/TopMenu";
+import BasicMenu from "../../component/menus/BasicMenu";
+import Footer from "../../component/footer/Footer";
 function CampingList() {
   // 상태 및 이벤트 핸들러 정의
   const [searchTerm, setSearchTerm] = useState("");
@@ -36,6 +38,8 @@ function CampingList() {
 
   return (
     <>
+      <BasicMenu></BasicMenu>
+      <TopMenu></TopMenu>
       <SearchBar
         searchTerm={searchTerm}
         handleSearchChange={handleSearchChange}
@@ -45,6 +49,7 @@ function CampingList() {
       <SideNav handleFilterChange={handleFilterChange} />
       <CampingFinder campings={filteredCampings} />
       {/* 그 외 필요한 요소들 */}
+      <Footer></Footer>
     </>
   );
 }
