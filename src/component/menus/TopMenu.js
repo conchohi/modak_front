@@ -18,10 +18,10 @@ function TopMenu(){
     return (
         <div ref={ref} className="w-full my-5  bg-[#DABFBF]">
             <ul className="flex justify-center p-3 font-semibold text-lg"  onMouseOver={hoverNav} onMouseOut={outsideNav}>
-                <li className="text-center"><Link className="px-16 py-1" to="/">캠핑 정보</Link></li>
-                <li className="text-center"><Link className="px-16 py-1" to="/">캠핑장 목록</Link></li>
-                <li className="text-center"><Link className="px-16 py-1" to="/">커뮤니티</Link></li>
-                <li className="text-center"><Link className="px-16 py-1" to="/">고객지원</Link></li>
+                <li className="text-center w-1/5"><Link className="px-5 py-1" to="/">캠핑 정보</Link></li>
+                <li className="text-center w-1/5"><Link className="px-5 py-1" to="/">캠핑장 목록</Link></li>
+                <li className="text-center w-1/5"><Link className="px-5 py-1" to="/">커뮤니티</Link></li>
+                <li className="text-center w-1/5"><Link className="px-5 py-1" to="/">고객지원</Link></li>
             </ul>
             {isDropdown && <TopMenuDrop  onMouseOver={hoverNav} onMouseOut={outsideNav}/>
                 }

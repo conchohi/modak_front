@@ -7,6 +7,7 @@ const FindId = lazy(() => import("../pages/find/FindIdPage"));
 const FindPwd = lazy(() => import("../pages/find/FindPwdPage"));
 const Join = lazy(() => import("../pages/Join"));
 const Login = lazy(() => import("../pages/Login"));
+const MyPage = lazy(() => import("../pages/MyPage"));
 const List = lazy(() => import("../pages/CampingList/CampingList"));
 
 const root = createBrowserRouter([
@@ -47,6 +48,14 @@ const root = createBrowserRouter([
     element: (
       <Suspense fallback={<Loading />}>
         <Join />
+      </Suspense>
+    ),
+  },
+  {
+    path: "/mypage",
+    element: (
+      <Suspense fallback={<Loading />}>
+        <MyPage />
       </Suspense>
     ),
   },
