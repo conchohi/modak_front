@@ -4,6 +4,7 @@ import BadgeList from "./list/BadgeList";
 import {MyMapCamp} from "./map/MyMapCamp";
 import { Link } from "react-router-dom";
 import FavoriteList from "./list/FavoriteList";
+import MySideMenu from "./menus/MySideMenu";
 function MyPageComponent(){
     const [nickname, setNickname] = useState("닉네임");
 
@@ -12,6 +13,7 @@ function MyPageComponent(){
             <div className="w-full flex mt-16">
                 <div className="w-1/6">
                     {/* 여기에 사이드 네비 */}
+                    <MySideMenu/>
                 </div>
                 <div className="w-5/6 flex flex-col">
                     <div className="w-full flex border-b-2 pb-10 border-gray-200">
@@ -40,7 +42,7 @@ function MyPageComponent(){
                     </div>
                 </div>    
 
-            </div>
+            </div> 
         </>
     )
 }
