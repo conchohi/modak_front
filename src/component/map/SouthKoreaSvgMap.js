@@ -9,7 +9,7 @@ export const SouthKoreaSvgMap = (props) => {
                 if (!count) {
                     count = 0;
                 }
-                return <path id={location.id} name={location.name} d={location.path} className={props.locationClassName} tabIndex={props.locationTabIndex} role={props.role} aria-label={location.name}  onMouseOver={props.onLocationMouseOver} onMouseOut={props.onLocationMouseOut} onMouseMove={props.onLocationMouseMove} onClick={props.onLocationClick}
+                return <path id={location.id} name={location.name} d={location.path} className={props.locationClassName} tabIndex={props.locationTabIndex} role={props.role} aria-label={location.name}  onMouseOver={props.onLocationMouseOver ? props.onLocationMouseOver : null} onMouseOut={props.onLocationMouseOut ? props.onLocationMouseOut : null } onMouseMove={props.onLocationMouseMove ? props.onLocationMouseMove : null} onClick={props.onLocationClick}
                 key= {location.id} fill= {props.setColorByCount(count)} ></path>
             })
             }

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { SouthKoreaSvgMap } from "./SouthKoreaSvgMap";
 import WeatherInfo from "../weather/WeatherInfo";
-import BestCampList from "../list/BestCampList";
+import MainCampList from "../list/MainCampList";
 
 const WeatherModal = ({ tooltipStyle, weatherData}) => {
     return (
@@ -12,7 +12,7 @@ const WeatherModal = ({ tooltipStyle, weatherData}) => {
 
 };
 
-export const MapCamp = () => {
+export const MainMapCamp = () => {
     //날씨에 따라 map 색 정해주는 함수 (차후 설정)
     const setColorByWeather = (weather) => {
         if (weather === "구름") return "#F1F1F1";
@@ -54,7 +54,7 @@ export const MapCamp = () => {
     {name : "캠핌장3", location : "테스트3"},
     {name : "캠핌장4", location : "테스트4"}]);
 
-    //캠핑장 선택 시 locale 변경, hover 시 hoverLocale 변경
+    //지역 선택 시 locale 변경, hover 시 hoverLocale 변경
     const [locale, setLocale] = useState();
     const [hoverLocale, setHoverLocale] = useState();
 
@@ -125,6 +125,7 @@ export const MapCamp = () => {
 
     const handleLocationMouseOut = () => {
         setIsOpen(false);
+        
     };
 
     const handleLocationMouseMove = (event) => {
@@ -149,15 +150,15 @@ export const MapCamp = () => {
     };
 
     return(
-            <div className="w-full flex p-2">
-                <div className="w-1/2 flex items-center justify-center bg-gray-100">
+            <div className="w-full flex p-2 flex-col md:flex-row">
+                <div className="w-full md:w-1/2 flex items-center justify-center bg-gray-100">
                     <div className="w-3/5 ">
                         <SouthKoreaSvgMap data={mapData} setColorByCount={setColorByWeather} onLocationMouseOver={handleLocationMouseOver} onLocationMouseOut={handleLocationMouseOut} onLocationMouseMove= {handleLocationMouseMove} onLocationClick={handleLocationClick}/>
                         {isOpen && <WeatherModal tooltipStyle={tooltipStyle} weatherData={weatherData}/>}
                     </div>
                 </div>
-                <div className="w-1/2">
-                    <BestCampList camps={bestCampData}/>
+                <div className="mt-5 md:mt-0 w-full md:w-1/2">
+                    <MainCampList camps={bestCampData} locale={locale}/>
                 </div>
             </div>
         );

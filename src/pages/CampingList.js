@@ -1,16 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../style/CampingList.css";
 import Footer from "./Footer";
-// LoginSection 컴포넌트
-const LoginSection = () => {
-  return (
-    <div className="loginSection" style={{ float: "right" }}>
-      <a href="/login">로그인</a>
-      <a href="/logout">로그아웃</a>
-      <a href="/mypage">마이페이지</a>
-    </div>
-  );
-};
+
 // SearchBar 컴포넌트
 const SearchBar = ({ searchTerm, handleSearchChange, handleSearchClick }) => {
   return (
