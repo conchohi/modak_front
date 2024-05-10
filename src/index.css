@@ -6,3 +6,9 @@
   margin: 0;
   padding: 0;
 }
+
+.errorMessageWrap{
+  margin-top: 8px;
+  color: red;
+  font-size: 12px;
+}
