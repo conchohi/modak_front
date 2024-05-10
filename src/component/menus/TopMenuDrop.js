@@ -2,28 +2,28 @@ import React from "react";
 import { Link } from "react-router-dom";
 function TopMenuDrop({onMouseOver, onMouseOut}){
     return(
-        <div className="w-full absolute bg-[#DAC7C7] opacity-75" onMouseOut={onMouseOut} onMouseOver={onMouseOver}>
-                    <ul className="flex flex-row justify-center p-3">
-                        <li className="px-16 text-center">
-                            <ul>
+        <div className="w-4/5 absolute bg-gray-200 opacity-75" onMouseOut={onMouseOut} onMouseOver={onMouseOver}>
+                    <ul className="flex justify-start p-3">
+                        <li className="text-center px-3 w-1/4 md:w-1/6">
+                            <ul className="py-1">
                                 <li className="pb-1"><Link to="/find/id">캠핑 준비</Link></li>
                                 <li><Link>음식 추천</Link></li>
                             </ul>
                         </li>
-                        <li className="px-16 text-center">
-                            <ul>
-                                <li  className="pb-1"><Link>지역별 찾기</Link></li>
-                                <li><Link>유형별 찾기</Link></li>
+                        <li className="text-center px-3 w-1/4 md:w-1/6">
+                            <ul className="py-1 ">
+                                <li className="pb-1"><Link>지역별</Link></li>
+                                <li><Link>유형별</Link></li>
                             </ul>
                         </li>
-                        <li className="px-16 text-center">
-                            <ul>
-                                <li  className="pb-1"><Link>캠핑 후기</Link></li>
-                                <li><Link>자유 게시판</Link></li>
+                        <li className="text-center px-3 w-1/4 md:w-1/6">
+                            <ul className="py-1">
+                                <li className="pb-1"><Link>캠핑 후기</Link></li>
+                                <li><Link>게시판</Link></li>
                             </ul>
                         </li>
-                        <li className="px-16 text-center">
-                            <ul>
+                        <li className="text-center px-3 w-1/4 md:w-1/6">
+                            <ul className="py-1">
                                 <li  className="pb-1"><Link>공지사항</Link></li>
                                 <li><Link>FAQ</Link></li>
                             </ul>

@@ -1,11 +1,11 @@
 import React from "react";
-import { MapCamp } from "./map/MapCamp";
+import { MainMapCamp} from "./map/MainMapCamp";
 import CategoryMenu from "./menus/CategoryMenu";
 function MainComponent(){
     return(
         <>
             <CategoryMenu/>
-            <MapCamp/>
+            <MainMapCamp/>
         </>
     )
 }

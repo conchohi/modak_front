@@ -19,7 +19,7 @@ function BasicMenu(){
                 <div class="hidden w-3/4 justify-end p-2 text-base sm:block me-5 font-bold">
                     <ul class="flex flex-row justify-end space-x-8">
                         <li>
-                            <Link to="/" class="block rounded p-2 text-gray-700 hover:bg-gray-50 hover:text-blue-700">
+                            <Link to="/mypage" class="block rounded p-2 text-gray-700 hover:bg-gray-50 hover:text-blue-700">
                                 마이페이지
                             </Link>
                         </li>
