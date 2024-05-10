@@ -7,6 +7,11 @@
   padding: 0;
 }
 
+.errorMessageWrap{
+  margin-top: 8px;
+  color: red;
+  font-size: 12px;
+}
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap');
 body{
   font-family: "Noto Sans KR", sans-serif;

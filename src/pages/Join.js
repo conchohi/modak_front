@@ -1,8 +1,30 @@
-import React from 'react'
-import BasicLayout from '../layouts/BasicLayout'
+import React, { useState } from 'react';
+import BasicLayout from '../layouts/BasicLayout';
 
 const Join = () => {
-    return(
+    const [formData, setFormData] = useState({
+        id: '',
+        password: '',
+        password_check: '',
+        nickname: '',
+        phone_number: ''
+    });
+
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setFormData({
+            ...formData,
+            [name]: value
+        });
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        // 여기서 회원가입 처리 로직을 추가할 수 있습니다.
+        console.log(formData);
+    };
+
+    return (
         <>
             <BasicLayout>
                 <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
@@ -11,7 +33,7 @@ const Join = () => {
                             회원가입
                         </h2>
 
-                        <form className="mt-8 space-y-6">
+                        <form onSubmit={handleSubmit} className="mt-8 space-y-6">
                             <div>
                                 <label htmlFor="id" className="block text-sm font-medium leading-6 text-gray-700">아이디</label>
                                 <input
@@ -21,6 +43,8 @@ const Join = () => {
                                     placeholder="아이디를 입력해주세요."
                                     autoComplete="id"
                                     required
+                                    value={formData.id}
+                                    onChange={handleInputChange}
                                     className="mt-2 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-600 focus:ring focus:ring-indigo-600 focus:ring-opacity-50 placeholder-gray-400 text-sm py-2 px-3"
                                 />
                             </div>
@@ -34,6 +58,8 @@ const Join = () => {
                                     placeholder="비밀번호를 입력해주세요."
                                     autoComplete="new-password"
                                     required
+                                    value={formData.password}
+                                    onChange={handleInputChange}
                                     className="mt-2 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-600 focus:ring focus:ring-indigo-600 focus:ring-opacity-50 placeholder-gray-400 text-sm py-2 px-3"
                                 />
                             </div>
@@ -47,6 +73,8 @@ const Join = () => {
                                     placeholder="비밀번호를 확인해주세요."
                                     autoComplete="new-password_check"
                                     required
+                                    value={formData.password_check}
+                                    onChange={handleInputChange}
                                     className="mt-2 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-600 focus:ring focus:ring-indigo-600 focus:ring-opacity-50 placeholder-gray-400 text-sm py-2 px-3"
                                 />
                             </div>
@@ -60,6 +88,8 @@ const Join = () => {
                                     placeholder="사용할 닉네임을 입력해주세요."
                                     autoComplete="nickname"
                                     required
+                                    value={formData.nickname}
+                                    onChange={handleInputChange}
                                     className="mt-2 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-600 focus:ring focus:ring-indigo-600 focus:ring-opacity-50 placeholder-gray-400 text-sm py-2 px-3"
                                 />
                             </div>
@@ -73,6 +103,8 @@ const Join = () => {
                                     placeholder="'-'를 제외한 숫자만 입력하세요."
                                     autoComplete="tel"
                                     required
+                                    value={formData.phone_number}
+                                    onChange={handleInputChange}
                                     className="mt-2 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-600 focus:ring focus:ring-indigo-600 focus:ring-opacity-50 placeholder-gray-400 text-sm py-2 px-3"
                                 />
                             </div>
@@ -93,4 +125,4 @@ const Join = () => {
     )
 }
 
-export default Join
+export default Join;
