@@ -9,6 +9,7 @@ const Join = lazy(() => import("../pages/Join"));
 const Login = lazy(() => import("../pages/Login"));
 const MyPage = lazy(() => import("../pages/MyPage"));
 const List = lazy(() => import("../pages/CampingList/CampingList"));
+const CampReview = lazy(() => import("../pages/CampReview"));
 
 const root = createBrowserRouter([
   {
@@ -66,6 +67,14 @@ const root = createBrowserRouter([
         <List />
       </Suspense>
     ),
+  },
+  {
+    path: "/campreview",
+    element: (
+      <Suspense fallback={<Loading />}>
+        <CampReview />
+      </Suspense>
+    )
   },
 ]);
 

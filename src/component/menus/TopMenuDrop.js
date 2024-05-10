@@ -18,7 +18,7 @@ function TopMenuDrop({onMouseOver, onMouseOut}){
                         </li>
                         <li className="text-center  w-1/5">
                             <ul>
-                                <li  className="pb-1"><Link>캠핑 후기</Link></li>
+                                <li  className="pb-1"><Link to="/CampReview">캠핑 후기</Link></li>
                                 <li><Link>자유 게시판</Link></li>
                             </ul>
                         </li>
