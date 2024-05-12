@@ -9,6 +9,7 @@ const Join = lazy(() => import("../pages/Join"));
 const Login = lazy(() => import("../pages/Login"));
 const MyPage = lazy(() => import("../pages/MyPage"));
 const List = lazy(() => import("../pages/CampingList/CampingList"));
+const NoticePage = lazy(()=>import("../pages/noice/NoticePage"));
 
 const root = createBrowserRouter([
   {
@@ -67,6 +68,14 @@ const root = createBrowserRouter([
       </Suspense>
     ),
   },
+  {
+    path:"/notice",
+    element:(
+      <Suspense fallback={<Loading />}>
+        <NoticePage />
+      </Suspense>
+    )
+  }
 ]);
 
 export default root;
