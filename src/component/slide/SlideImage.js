@@ -11,7 +11,7 @@ function SlideImage({images}){
         arrows: false,
         dots: true,
         infinite: true,
-        speed: 200,
+        speed: 500,
         slidesToShow: 1,
         slidesToScroll: 1,
     }
@@ -33,9 +33,9 @@ function SlideImage({images}){
         <div className="w-full">
             <div>
                 <Slider {...settings} ref={slickRef}>
-                    {images.map(image =>{
+                    {images.map((image,idx) =>{
                         return(
-                            <SlideWithArrows imgSrc={image}/>
+                            <SlideWithArrows key={idx} imgSrc={image}/>
                         )
                     })}
                 </Slider>

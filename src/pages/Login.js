@@ -54,9 +54,16 @@ const Login = () => {
                     <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-md bg-white shadow-md rounded px-8 pt-6 pb-8">
                         <form onSubmit={handleSubmit} className="space-y-6">
                             <div>
-                                <label htmlFor="id" className="block text-sm font-medium leading-6 text-gray-900">
-                                    아이디
-                                </label>
+                                <div className="flex items-center justify-between">
+                                    <label htmlFor="id" className="block text-sm font-medium leading-6 text-gray-900">
+                                        아이디
+                                    </label>
+                                    <div className="text-sm">
+                                        <a href="/find/id" className="font-semibold text-indigo-400 hover:text-indigo-500">
+                                            아이디를 잊으셨나요?
+                                        </a>
+                                    </div>
+                                </div>
                                 <div className="mt-2">
                                     <input
                                         id="id"
