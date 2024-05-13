@@ -1,31 +1,31 @@
-import React from "react";
+import React, { useState } from "react";
 
-const SearchBar = ({ searchTerm, handleSearchChange, handleSearchClick }) => {
+const SearchBar = () => {
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const handleSearchChange = (event) => {
+    setSearchTerm(event.target.value);
+  };
+
+  const handleSearchClick = () => {
+    // 검색 로직
+  };
+
   return (
     <div className="flex justify-center items-center p-4 bg-[#ffffff] shadow rounded-lg">
-      <div className="flex border-2 border-pink-100 bg-white rounded overflow-hidden">
+      <div className="flex border-2 border-pink-100 rounded overflow-hidden">
         <input
           type="text"
-          placeholder="캠핑장 검색" // placeholder 텍스트 수정
+          placeholder="캠핑장 검색"
           value={searchTerm}
           onChange={handleSearchChange}
-          className="px-4 py-2 w-f1 focus:outline-none" // input 필드의 길이 조정은 w-full 유지
+          className="px-4 py-2 w-full focus:outline-none"
         />
         <button
           onClick={handleSearchClick}
-          className="flex items-center justify-center px-4 border-l hover:bg-pink-50" // 호버 효과 추가
+          className="flex items-center justify-center px-4 border-l hover:bg-pink-50"
         >
-          <svg
-            className="w-6 h-6 text-pink-400"
-            fill="none"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-          </svg>
+          {/* 아이콘 등 */}
         </button>
       </div>
     </div>

@@ -8,7 +8,6 @@ import BasicMenu from "../../component/menus/BasicMenu";
 import Footer from "../../component/footer/Footer";
 function CampingList() {
   // 상태 및 이벤트 핸들러 정의
-  const [searchTerm, setSearchTerm] = useState("");
   const [filters, setFilters] = useState({});
   const [filteredCampings, setFilteredCampings] = useState([]);
 
@@ -19,14 +18,6 @@ function CampingList() {
     { img: "trendItem3.jpg", name: "캠핑 아이템 3" },
     // 추가 아이템...
   ];
-
-  const handleSearchChange = (event) => {
-    setSearchTerm(event.target.value);
-  };
-
-  const handleSearchClick = () => {
-    // 검색 로직
-  };
 
   const handleFilterChange = (event) => {
     const { name, checked } = event.target;
@@ -40,11 +31,7 @@ function CampingList() {
     <>
       <BasicMenu></BasicMenu>
       <TopMenu></TopMenu>
-      <SearchBar
-        searchTerm={searchTerm}
-        handleSearchChange={handleSearchChange}
-        handleSearchClick={handleSearchClick}
-      />
+      <SearchBar />
       <TrendSlider items={trendItems} /> {/* TrendSlider 컴포넌트 배치 */}
       <SideNav handleFilterChange={handleFilterChange} />
       <CampingFinder campings={filteredCampings} />
