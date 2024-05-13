@@ -8,9 +8,9 @@ function BasicLayout({children}){
         <div>
             <BasicMenu/>
             <TopMenu/>
-            <div className="min-h-[960px] w-full md:w-3/4 mx-auto">
-                {children}
-            </div>
+                <div className="min-h-[960px] w-full md:w-5/6 mx-auto">
+                    {children}
+                </div>
             <Footer/>
         </div>
     )

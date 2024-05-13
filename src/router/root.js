@@ -1,5 +1,5 @@
 import { Suspense, lazy } from "react";
-import Loading from "../component/Loading";
+import Loading from "../component/common/Loading";
 const { createBrowserRouter } = require("react-router-dom");
 
 const TodoIndex = lazy(() => import("../pages/IndexPage"));
@@ -8,8 +8,8 @@ const FindPwd = lazy(() => import("../pages/find/FindPwdPage"));
 const Join = lazy(() => import("../pages/Join"));
 const Login = lazy(() => import("../pages/Login"));
 const MyPage = lazy(() => import("../pages/MyPage"));
-const List = lazy(() => import("../pages/CampingList/CampingList"));
-const Test = lazy(() => import("../pages/TestPage.js"));
+const List = lazy(() => import("../pages/CampingListPage.js"));
+const Detail = lazy(() => import("../pages/CampingDetailPage.js"));
 
 const root = createBrowserRouter([
   {
@@ -61,17 +61,17 @@ const root = createBrowserRouter([
     ),
   },
   {
-    path: "/List",
+    path: "/camp/list",
     element: (
       <Suspense fallback={<Loading />}>
         <List />
       </Suspense>
     ),
-  },  {
-    path: "/test",
+  },{
+    path: "/camp/:campNo",
     element: (
       <Suspense fallback={<Loading />}>
-        <Test />
+        <Detail />
       </Suspense>
     ),
   }
