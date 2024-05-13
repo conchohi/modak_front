@@ -11,7 +11,8 @@ const MyPage = lazy(() => import("../pages/MyPage"));
 const List = lazy(() => import("../pages/CampingListPage.js"));
 const Detail = lazy(() => import("../pages/CampingDetailPage.js"));
 const CampReview = lazy(() => import("../pages/CampReview"));
-
+const NoticePage = lazy(() => import("../pages/noticepage/NoticePage"));
+const FAQPage = lazy(() => import("../pages/noticepage/FAQPage"));
 
 const root = createBrowserRouter([
   {
@@ -69,11 +70,36 @@ const root = createBrowserRouter([
         <List />
       </Suspense>
     ),
-  },{
+  },
+  {
+    path: "/notice",
+    element: (
+      <Suspense fallback={<Loading />}>
+        <NoticePage />{" "}
+      </Suspense>
+    ),
+  },
+  {
     path: "/camp/:campNo",
     element: (
       <Suspense fallback={<Loading />}>
         <Detail />
+      </Suspense>
+    ),
+  },
+  {
+    path: "/faq",
+    element: (
+      <Suspense fallback={<Loading />}>
+        <FAQPage />
+      </Suspense>
+    ),
+  },
+  {
+    path: "/notice",
+    element: (
+      <Suspense fallback={<Loading />}>
+        <NoticePage />
       </Suspense>
     ),
   },
@@ -83,10 +109,8 @@ const root = createBrowserRouter([
       <Suspense fallback={<Loading />}>
         <CampReview />
       </Suspense>
-    )
+    ),
   },
-
-
 ]);
 
 export default root;
