@@ -1,5 +1,5 @@
 import { Suspense, lazy } from "react";
-import Loading from "../component/Loading";
+import Loading from "../component/common/Loading";
 const { createBrowserRouter } = require("react-router-dom");
 
 const TodoIndex = lazy(() => import("../pages/IndexPage"));
@@ -8,13 +8,11 @@ const FindPwd = lazy(() => import("../pages/find/FindPwdPage"));
 const Join = lazy(() => import("../pages/Join"));
 const Login = lazy(() => import("../pages/Login"));
 const MyPage = lazy(() => import("../pages/MyPage"));
-const List = lazy(() => import("../pages/CampingList/CampingList"));
-<<<<<<< HEAD
+const List = lazy(() => import("../pages/CampingListPage.js"));
+const Detail = lazy(() => import("../pages/CampingDetailPage.js"));
+const CampReview = lazy(() => import("../pages/CampReview"));
 const NoticePage = lazy(() => import("../pages/noticepage/NoticePage"));
 const FAQPage = lazy(() => import("../pages/noticepage/FAQPage"));
-=======
-const NoticePage = lazy(()=>import("../pages/noice/NoticePage"));
->>>>>>> cbc985e5db2ee438242bc1f39993970986c0b007
 
 const root = createBrowserRouter([
   {
@@ -66,7 +64,7 @@ const root = createBrowserRouter([
     ),
   },
   {
-    path: "/List",
+    path: "/camp/list",
     element: (
       <Suspense fallback={<Loading />}>
         <List />
@@ -74,11 +72,18 @@ const root = createBrowserRouter([
     ),
   },
   {
-<<<<<<< HEAD
     path: "/notice",
     element: (
       <Suspense fallback={<Loading />}>
-        <NoticePage />
+        <NoticePage />{" "}
+      </Suspense>
+    ),
+  },
+  {
+    path: "/camp/:campNo",
+    element: (
+      <Suspense fallback={<Loading />}>
+        <Detail />
       </Suspense>
     ),
   },
@@ -90,15 +95,22 @@ const root = createBrowserRouter([
       </Suspense>
     ),
   },
-=======
-    path:"/notice",
-    element:(
+  {
+    path: "/notice",
+    element: (
       <Suspense fallback={<Loading />}>
         <NoticePage />
       </Suspense>
-    )
-  }
->>>>>>> cbc985e5db2ee438242bc1f39993970986c0b007
+    ),
+  },
+  {
+    path: "/campreview",
+    element: (
+      <Suspense fallback={<Loading />}>
+        <CampReview />
+      </Suspense>
+    ),
+  },
 ]);
 
 export default root;

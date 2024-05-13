@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 function checkWeather(weather){
     let weatherNum = 0;
@@ -15,20 +15,33 @@ function checkWeather(weather){
      return weatherNum;
 }
 
-function WeatherToday({region, data}){
-    const weatherNum = checkWeather("맑음"); //data.description
+function WeatherToday({region}){
+    const [weatherData, setWeatherData] = useState({
+        temp : "24℃",
+        highTemp : "28℃",
+        lowTemp : "18℃",
+        description : "맑음"
+    })
+    useEffect(()=>{
+        //날씨별로 setWeatherData(); 불러오기 axious
+    },[region])
+
+    const weatherNum = checkWeather(weatherData.description); 
     const imgSrc = `/img/weather/${weatherNum}.jpg`;
     return(
         <div className="w-full h-2/3 flex flex-col text-center">
-            <div className="p-1"><span className="text-lg font-bold me-3">{region}</span> 2024-05-07{/*{data.date}*/}</div>
-            <div className="w-full flex mt-1 flex-row items-center justify-center">
+            <div className="p-1 flex flex-wrap items-center justify-center">
+                <span className="text-lg font-bold me-3">{region}</span> 
+                <span className="">2024-05-07{/*{data.date}*/}</span>
+            </div>
+            <div className="w-full flex mt-1 flex-row flex-wrap items-center justify-center">
                 <img className="w-1/3 mx-2" src={imgSrc} alt="맑음"/>{/*alt={data.description}*/}
-                <span className="text-2xl font-bold mx-2">{data.temp}</span>
-                <span className="mx-1 text-sm text-stone-600 font-semibold">{data.description}</span>
+                <span className="text-2xl font-bold mx-2">{weatherData.temp}</span>
+                <span className="mx-1 text-sm text-stone-600 font-semibold">{weatherData.description}</span>
             </div>
             <div>
-                <span className="mx-1 text-sm text-blue-800 font-bold">{data.highTemp}</span><span className="text-xs text-stone-400">/</span>
-                <span className="mx-1 text-sm text-red-800 font-bold">{data.lowTemp}</span>
+                <span className="mx-1 text-sm text-blue-800 font-bold">{weatherData.highTemp}</span><span className="text-xs text-stone-400">/</span>
+                <span className="mx-1 text-sm text-red-800 font-bold">{weatherData.lowTemp}</span>
             </div>
 
         </div>

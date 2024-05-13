@@ -14,7 +14,9 @@ function MainCampList({camps, locale}){
                 {camps.map((camp)=>{
                     return (
                         <div className="w-1/2">
-                            <MainCard camp={camp}/>     
+                            <Link to={`/camp/${camp.campNo}`}>
+                                <MainCard camp={camp}/>     
+                            </Link>
                         </div>
                     )
                 })}
