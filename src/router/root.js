@@ -10,6 +10,8 @@ const Login = lazy(() => import("../pages/Login"));
 const MyPage = lazy(() => import("../pages/MyPage"));
 const List = lazy(() => import("../pages/CampingListPage.js"));
 const Detail = lazy(() => import("../pages/CampingDetailPage.js"));
+const CampReview = lazy(() => import("../pages/CampReview"));
+
 
 const root = createBrowserRouter([
   {
@@ -74,7 +76,17 @@ const root = createBrowserRouter([
         <Detail />
       </Suspense>
     ),
-  }
+  },
+  {
+    path: "/campreview",
+    element: (
+      <Suspense fallback={<Loading />}>
+        <CampReview />
+      </Suspense>
+    )
+  },
+
+
 ]);
 
 export default root;
