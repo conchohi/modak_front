@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 const SideNav = () => {
   const [showType, setShowType] = useState(false);
   const [showCategories, setShowCategories] = useState(false);
-  const {region, type} = useCustomMove();
+  const {type, region, searchTerm, moveToList} = useCustomMove();
   const navigate = useNavigate();
 
   const [selectType, setSelectType] = useState(type);
@@ -28,7 +28,7 @@ const SideNav = () => {
   ];
 
   useEffect(() => {
-    navigate(`/camp/list?region=${region}&type=${selectType}`)
+    moveToList({type:selectType, region:region, searchTerm:searchTerm})
   }, [selectType]); 
 
   return (

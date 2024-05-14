@@ -26,7 +26,7 @@ const items = [
 
 const TrendSlider = () => {
   const slickRef = useRef(null);
-  const {type} = useCustomMove();
+  const {type, region, searchTerm, moveToList} = useCustomMove();
   const previous = useCallback(() => slickRef.current.slickPrev(), []);
   const next = useCallback(() => slickRef.current.slickNext(), []);
 
@@ -63,10 +63,10 @@ const TrendSlider = () => {
       <Slider {...settings} ref={slickRef}>
         {items.map((item, index) => (
           <div className="flex flex-col justify-center text-center items-center" key={index}>
-            <Link to={`/camp/list?region=${item.name}&type=${type}`}>
+            <div className="cursor-pointer" onClick={()=>moveToList({region:item.name, type:type, searchTerm:searchTerm})}>
               <img src={`/img/region/${item.img}`} alt={item.name} />
               <p className="text-sm md:text-base">{item.name}</p>
-            </Link>
+            </div>
           </div>
         ))}
       </Slider>
