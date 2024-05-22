@@ -18,7 +18,6 @@ function CampingListComponent(){
       current : 1,
       nextPage : 6,
       prevPage : 0,
-      region : region,
       dtoList : [
         {id : 1,type : "오토캠핑", name : "정선 라만차의 돈키호테 캠핑장", countLog : 40, location: "강원 정선군 화암면 그림바위길 1-23", 
         description : "왕산해수욕장에 둥지 튼 캠핑장", phone : "1588-3236", facilties : ["개수대", "샤워실","화장실","매점","와이파이"], imgList : []},
@@ -48,8 +47,10 @@ function CampingListComponent(){
   
     return(
         <div className="flex flex-col flex-wrap md:flex-row">
-          <div className="w-full mb-10">
-            <SearchBar/>
+          <div className="w-full flex flex-col justify-center mb-10">
+            <div className="w-3/5 mx-auto mb-5">
+              <SearchBar/>
+            </div>
             <TrendSlider/> {/* TrendSlider 컴포넌트 배치 */}
           {/* 그 외 필요한 요소들 */}
           </div>
