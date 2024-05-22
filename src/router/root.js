@@ -5,7 +5,7 @@ const { createBrowserRouter } = require("react-router-dom");
 const TodoIndex = lazy(() => import("../pages/IndexPage"));
 const FindId = lazy(() => import("../pages/find/FindIdPage"));
 const FindPwd = lazy(() => import("../pages/find/FindPwdPage"));
-const Join = lazy(() => import("../pages/Join"));
+const SignUp = lazy(() => import("../pages/Authentication/SignUp/index.tsx"));
 const Login = lazy(() => import("../pages/Login"));
 const MyPage = lazy(() => import("../pages/MyPage"));
 const List = lazy(() => import("../pages/CampingListPage.js"));
@@ -51,7 +51,7 @@ const root = createBrowserRouter([
     path: "/join",
     element: (
       <Suspense fallback={<Loading />}>
-        <Join />
+        <SignUp />
       </Suspense>
     ),
   },
