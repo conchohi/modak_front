@@ -11,7 +11,7 @@ const Login = () => {
 
     const [idValid, setIdValid] = useState(false);
     const [passwordValid, setPasswordValid] = useState(false);
-    axios.post("", {params:{username:id, password:password}})
+
     // 아이디 입력 시 상태 업데이트 핸들러
     const handleId = (e) => {
         setId(e.target.value);

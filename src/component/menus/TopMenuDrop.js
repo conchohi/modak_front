@@ -13,19 +13,18 @@ function TopMenuDrop({onMouseOver, onMouseOut}){
                         <li className="text-center px-3 w-1/4 md:w-1/6">
                             <ul className="py-1 ">
                                 <li className="pb-1"><Link to="/camp/list">지역별</Link></li>
-                                <li><Link to="/camp/list">유형별</Link></li>
+                                <li><Link to="/camp/list">날씨별</Link></li>
                             </ul>
                         </li>
                         <li className="text-center px-3 w-1/4 md:w-1/6">
                             <ul className="py-1">
                                 <li className="pb-1"><Link to="/campreview">캠핑 후기</Link></li>
-                                <li><Link>게시판</Link></li>
                             </ul>
                         </li>
                         <li className="text-center px-3 w-1/4 md:w-1/6">
                             <ul className="py-1">
-                                <li  className="pb-1"><Link>공지사항</Link></li>
-                                <li><Link>FAQ</Link></li>
+                                <li  className="pb-1"><Link to="/notice">공지사항</Link></li>
+                                <li><Link to="/faq">FAQ</Link></li>
                             </ul>
                         </li>
                         
