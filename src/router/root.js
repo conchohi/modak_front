@@ -119,8 +119,9 @@ const root = createBrowserRouter([
     element: (
       <Suspense fallback={<Loading />}>
         <WriteReviewPage />
-
-  },
+      </Suspense>
+    )
+},
   {
     path: "/campreview",
     element: (
