@@ -15,7 +15,7 @@ const CampReviewDetail = lazy(() => import("../pages/CampReviewDetail"));
 const WriteReviewPage = lazy(() => import("../pages/WriteReviewPage")); // 변경
 const NoticePage = lazy(() => import("../pages/noticepage/NoticePage"));
 const FAQPage = lazy(() => import("../pages/noticepage/FAQPage"));
-
+const AccessToken = lazy(() => import("../pages/social/getAccessPage"));
 const root = createBrowserRouter([
   {
     path: "",
@@ -131,6 +131,15 @@ const root = createBrowserRouter([
       </Suspense>
     ),
   },
+  {
+    path: "/getAccess",
+    element: (
+      <Suspense fallback={<Loading />}>
+        <AccessToken />
+
+      </Suspense>
+    ),
+  }
 ]);
 
 export default root;

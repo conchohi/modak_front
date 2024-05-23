@@ -4,9 +4,41 @@ import Dropdown from "../dropdown/Dropdown";
 import { MdLogin } from "react-icons/md";
 import { FaUserPlus, FaUser } from "react-icons/fa6";
 import { IoIosMenu } from "react-icons/io";
-import styled from "styled-components";
+import axios from "axios";
 
 function BasicMenu(){
+    const [isLogin, setIsLogin] = useState(false);
+
+    useEffect(() => {
+        if(localStorage.getItem('access')){
+            setIsLogin(true);
+        }   
+    })
+
+    const logoutFunction =  async () => {
+        try {
+          // 서버에 로그아웃 요청을 보냅니다.
+          const response = await axios.post('http://localhost:4040/logout', {}, {
+            withCredentials: true // 쿠키를 포함하여 요청
+          });
+      
+          if (response.status === 200) {
+            // 로그아웃 성공 시, 로컬 스토리지에서 토큰 제거
+            localStorage.removeItem('access');
+            
+            // 홈으로 이동
+            window.location.href = '/';
+          } else {
+            // 로그아웃 실패 처리
+            alert('로그아웃 실패');
+          }
+        } catch (error) {
+          console.error('로그아웃 오류', error);
+          alert('서버 오류로 인해 로그아웃에 실패했습니다.');
+        }
+      };
+
+
     return(
         <nav className="flex w-full items-center mb-10">
             <div className="mt-6">
@@ -23,7 +55,7 @@ function BasicMenu(){
                                 마이페이지
                             </Link>
                         </li>
-                        <li>
+                        {!isLogin ? <><li>
                             <Link to="/join" class="block rounded p-2 text-gray-700 hover:bg-gray-50 hover:text-blue-700">
                                 회원가입
                             </Link>
@@ -32,7 +64,11 @@ function BasicMenu(){
                             <Link to="/login" class="block rounded p-2 text-gray-700 hover:bg-gray-50 hover:text-blue-700">
                                 로그인
                             </Link>
-                        </li>
+                        </li></> : <li>
+                        <button onClick={logoutFunction} class="block rounded p-2 text-gray-700 hover:bg-gray-50 hover:text-blue-700">
+                                로그아웃
+                            </button>
+                            </li>}
                     </ul>
                 </div>
 

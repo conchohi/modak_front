@@ -9,10 +9,10 @@ import { getAllWeather } from "api/weatherApi";
 export const MainMapCamp = () => {
     //날씨에 따라 map 색 정해주는 함수 (차후 설정)
     const setColorByWeather = (weather) => {
-        if (weather === "맑음") return "#F1F1F1";
-        if (weather === "흐림") return "#92C7CF";
-        if (weather === "구름") return "#E5E1DA";
-        if (weather === "비") return "#FBF9F1";
+        if (weather === "맑음") return "#fffeb3";
+        if (weather === "흐림") return " #e0e0de";
+        if (weather === "구름") return "#709dc2";
+        if (weather === "비") return "#5179fc";
         else return "#ebfffd";
     };
     
