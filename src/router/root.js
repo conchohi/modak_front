@@ -1,17 +1,20 @@
 import { Suspense, lazy } from "react";
-import Loading from "../component/Loading";
-import { createBrowserRouter } from "react-router-dom";
+import Loading from "../component/common/Loading";
+const { createBrowserRouter } = require("react-router-dom");
 
 const TodoIndex = lazy(() => import("../pages/IndexPage"));
 const FindId = lazy(() => import("../pages/find/FindIdPage"));
 const FindPwd = lazy(() => import("../pages/find/FindPwdPage"));
-const Join = lazy(() => import("../pages/Join"));
+const SignUp = lazy(() => import("../pages/Authentication/SignUp/index.tsx"));
 const Login = lazy(() => import("../pages/Login"));
 const MyPage = lazy(() => import("../pages/MyPage"));
-const List = lazy(() => import("../pages/CampingList/CampingList"));
+const List = lazy(() => import("../pages/CampingListPage.js"));
+const Detail = lazy(() => import("../pages/CampingDetailPage.js"));
 const CampReview = lazy(() => import("../pages/CampReview"));
 const CampReviewDetail = lazy(() => import("../pages/CampReviewDetail"));
 const WriteReviewPage = lazy(() => import("../pages/WriteReviewPage")); // 변경
+const NoticePage = lazy(() => import("../pages/noticepage/NoticePage"));
+const FAQPage = lazy(() => import("../pages/noticepage/FAQPage"));
 
 const root = createBrowserRouter([
   {
@@ -50,7 +53,7 @@ const root = createBrowserRouter([
     path: "/join",
     element: (
       <Suspense fallback={<Loading />}>
-        <Join />
+        <SignUp />
       </Suspense>
     ),
   },
@@ -63,7 +66,7 @@ const root = createBrowserRouter([
     ),
   },
   {
-    path: "/list",
+    path: "/camp/list",
     element: (
       <Suspense fallback={<Loading />}>
         <List />
@@ -71,12 +74,37 @@ const root = createBrowserRouter([
     ),
   },
   {
-    path: "/campreview",
+    path: "/notice",
     element: (
       <Suspense fallback={<Loading />}>
-        <CampReview />
+        <NoticePage />{" "}
       </Suspense>
     ),
+  },
+  {
+    path: "/camp/:campNo",
+    element: (
+      <Suspense fallback={<Loading />}>
+        <Detail />
+      </Suspense>
+    ),
+  },
+  {
+    path: "/faq",
+    element: (
+      <Suspense fallback={<Loading />}>
+        <FAQPage />
+      </Suspense>
+    ),
+  },
+  {
+    path: "/notice",
+    element: (
+      <Suspense fallback={<Loading />}>
+        <NoticePage />
+      </Suspense>
+    ),
+
   },
   {
     path: "/campreview/:id",
@@ -91,6 +119,14 @@ const root = createBrowserRouter([
     element: (
       <Suspense fallback={<Loading />}>
         <WriteReviewPage />
+
+  },
+  {
+    path: "/campreview",
+    element: (
+      <Suspense fallback={<Loading />}>
+        <CampReview />
+
       </Suspense>
     ),
   },
