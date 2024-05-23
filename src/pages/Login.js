@@ -3,6 +3,11 @@ import BasicLayout from '../layouts/BasicLayout';
 import KakaoLoginComponent from '../component/member/KakaoLogin';
 import { KAKAO_AUTH_URL } from '../OAuth';
 import axios from 'axios';
+import ModalComponent from 'component/common/ModalComponent';
+import { useNavigate } from 'react-router-dom';
+import '../../src/App.css'
+import '../../src/pages/Authentication/SignUp/style.css'
+
 
 const Login = () => {
     // 아이디와 비밀번호를 상태로 관리합니다
@@ -12,6 +17,19 @@ const Login = () => {
     const [idValid, setIdValid] = useState(false);
     const [passwordValid, setPasswordValid] = useState(false);
 
+
+    const [isOpen, setIsOpen] = useState(false);
+    const [message, setMessage] = useState("");
+    const navigate = useNavigate();
+
+    const customCallback = ()=>{
+        if(message === '로그인 성공!'){
+            navigate("/")
+        } else{
+            setIsOpen(false)
+        }
+    }
+    
     // 아이디 입력 시 상태 업데이트 핸들러
     const handleId = (e) => {
         setId(e.target.value);
@@ -28,7 +46,7 @@ const Login = () => {
     const handlePassword = (e) => {
         setPassword(e.target.value);
         const regex =
-            /^(?=.*\d)(?=.[a-zA-Z])[0-9a-zA-Z!@#$%^&*]{8,20}$/; // 비밀번호 정규식 : 특수문자/문자/숫자 포함 형태의 8~20자리
+            /^(?=.*\d)(?=.[a-zA-Z])[0-9a-zA-Z!@#$%^&*]{8,13}$/; // 비밀번호 정규식 : 특수문자/문자/숫자 포함 형태의 8~20자리
         if(regex.test(password)) {
             setPasswordValid(true);
         } else{
@@ -37,14 +55,38 @@ const Login = () => {
     };
 
     // 폼 제출 핸들러
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        // 여기서 로그인 처리 로직을 추가할 수 있습니다
+        if (!idValid || !passwordValid) {
+            alert("유효한 아이디와 비밀번호를 입력해주세요.");
+            return;
+        }
+
+        try {
+            let formData= new FormData();
+            formData.append('username', id);
+            formData.append('password',password);
+            const response = await axios.post('http://localhost:4040/login', formData);
+            // 로그인 성공 처리
+            setMessage("로그인 성공!")
+            setIsOpen(true)
+            // 사용자 정보를 로컬 스토리지에 저장하거나 상태로 관리합니다.
+            localStorage.setItem('access', response.headers.get('access'));
+
+            
+        } catch (error) {
+            if (error.response.status === 401) setMessage('아이디 혹은 비밀번호가 틀렸습니다.');
+            else setMessage('서버 오류')
+            setIsOpen(true)
+            console.error('로그인 오류:', error);
+
+        }
     };
 
     return (
         <>
             <BasicLayout>
+                {isOpen && <ModalComponent message={message} callbackFunction={customCallback}/>}
                 <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
                     <div className="sm:mx-auto sm:w-full sm:max-w-sm">
                         <h2 className="mt-10 text-center text-3xl font-bold leading-9 tracking-tight text-gray-900">
@@ -124,6 +166,7 @@ const Login = () => {
 
                             <div>
                                 <button
+                                    onClick={handleSubmit}
                                     type="submit"
                                     className="flex w-full justify-center rounded-md bg-indigo-600 px-4 py-2 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                                 >
@@ -141,9 +184,12 @@ const Login = () => {
                         <p className="mt-4 text-center text-sm text-gray-500">
                             SNS 계정으로 로그인하기
                         </p>
-                        <a href={KAKAO_AUTH_URL} className='kakaobtn'>
-                            <img src={process.env.PUBLIC_URL + `assets/Kakao.png`}/>
-                        </a>    
+                        <div className="flex justify-center items-center mt-3">
+                        <div className='sign-up-content-sign-in-button-box'>
+                            <a href='http://localhost:4040/oauth2/authorization/kakao'> <div className='kakao-sign-in-button'/> </a>
+                            <a href='http://localhost:4040/oauth2/authorization/naver'><div className='naver-sign-in-button'/> </a>
+                        </div>
+                        </div>
                     </div>
                 </div>
             </BasicLayout>
