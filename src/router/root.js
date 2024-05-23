@@ -11,6 +11,8 @@ const MyPage = lazy(() => import("../pages/MyPage"));
 const List = lazy(() => import("../pages/CampingListPage.js"));
 const Detail = lazy(() => import("../pages/CampingDetailPage.js"));
 const CampReview = lazy(() => import("../pages/CampReview"));
+const CampReviewDetail = lazy(() => import("../pages/CampReviewDetail"));
+const WriteReviewPage = lazy(() => import("../pages/WriteReviewPage")); // 변경
 const NoticePage = lazy(() => import("../pages/noticepage/NoticePage"));
 const FAQPage = lazy(() => import("../pages/noticepage/FAQPage"));
 
@@ -102,12 +104,29 @@ const root = createBrowserRouter([
         <NoticePage />
       </Suspense>
     ),
+
+  },
+  {
+    path: "/campreview/:id",
+    element: (
+      <Suspense fallback={<Loading />}>
+        <CampReviewDetail />
+      </Suspense>
+    ),
+  },
+  {
+    path: "/write-review",
+    element: (
+      <Suspense fallback={<Loading />}>
+        <WriteReviewPage />
+
   },
   {
     path: "/campreview",
     element: (
       <Suspense fallback={<Loading />}>
         <CampReview />
+
       </Suspense>
     ),
   },
