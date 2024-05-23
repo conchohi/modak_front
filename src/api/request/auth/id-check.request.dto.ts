@@ -1,3 +1,3 @@
-export default interface idCheckRequestDto {
+export default interface IdCheckRequestDto {
     id : string;
 }
