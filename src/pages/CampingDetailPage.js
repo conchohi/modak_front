@@ -56,7 +56,7 @@ function CampingDetailPage() {
   return (
     <> 
       <BasicLayout>
-        {openModal && <ModalComponent mesaage={'로그인 후 이용할 수 있습니다.'} callbackFunction={()=>{
+        {openModal && <ModalComponent message={'로그인 후 이용할 수 있습니다.'} callbackFunction={()=>{
           navigate('/login')
         }}/>}
           <div className="w-full h-full flex flex-col justify-center items-center space-y-4 border-2 border-gray-200">
