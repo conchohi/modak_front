@@ -10,7 +10,7 @@ const ReviewList = ({reviewList}) => {
                     return(
                         <div className="m-2 p-3 flex flex-col bg-white border border-black/40 rounded-lg h-24">
                             <div className="flex flex-row ">
-                                <img className="w-12 h-12 me-2 rounded-full" alt="유저" src={review.userProfileImage ? `localhost:4040/api/user/${review.userProfileImage}`:"https://i.pinimg.com/564x/d9/7b/bb/d97bbb08017ac2309307f0822e63d082.jpg"}/>
+                                <img className="w-12 h-12 me-2 rounded-full" alt="유저" src={review.userProfileImage ? `http://localhost:4040/api/user/${review.userProfileImage}`:"https://i.pinimg.com/564x/d9/7b/bb/d97bbb08017ac2309307f0822e63d082.jpg"}/>
                                 <div>
                                     <Star score={review.score}/>
                                     <p className="font-semibold text-lg">{review.userNickname} | {review.createDate}</p>

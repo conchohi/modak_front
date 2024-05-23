@@ -1,8 +1,9 @@
 import axios from "axios";
+import { API_SERVER_HOST } from "./campApi";
 
 export const getAccessToken = async () => {
     try {
-      const response = await axios.post('http://localhost:4040/reissue', {}, {
+      const response = await axios.post(`${API_SERVER_HOST}/reissue`, {}, {
         withCredentials: true // 쿠키를 포함하여 요청
       });
   
