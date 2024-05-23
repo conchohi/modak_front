@@ -2,22 +2,17 @@ import { useEffect, useState } from "react";
 import { SouthKoreaSvgMap } from "./SouthKoreaSvgMap";
 import WeatherInfo from "../weather/WeatherInfo";
 import MainCampList from "../list/MainCampList";
+import { getBest4, getBest4ByRegion } from "api/campApi";
+import { getAllWeather } from "api/weatherApi";
 
-const WeatherModal = ({ tooltipStyle, region}) => {
-    return (
-        <div className="w-72 h-72 flex flex-col border border-solid border-black fixed rounded-3xl min-w-20 p-3 bg-white text-black" style={tooltipStyle}>
-            <WeatherInfo region={region}/> {/*특정 지역 날씨 데이터 */}
-        </div>
-    )
-
-};
 
 export const MainMapCamp = () => {
     //날씨에 따라 map 색 정해주는 함수 (차후 설정)
     const setColorByWeather = (weather) => {
-        if (weather === "구름") return "#F1F1F1";
-        if (weather === "햇빛") return "#C1E5DF";
-        if (weather === "눈") return "#D9EBE8";
+        if (weather === "맑음") return "#F1F1F1";
+        if (weather === "흐림") return "#92C7CF";
+        if (weather === "구름") return "#E5E1DA";
+        if (weather === "비") return "#FBF9F1";
         else return "#ebfffd";
     };
     
@@ -25,59 +20,61 @@ export const MainMapCamp = () => {
     const [mapData, setMapData] = useState({});
     const [isOpen, setIsOpen] = useState(false);
     const [bestCampData, setBestCampData] = useState([
-        {name:"캠핑장1", location:"강원도", campNo:1},
-        {name:"캠핑장2", location:"강원도",campNo:1},
-        {name:"캠핑장3", location:"강원도",campNo:1},
-        {name:"캠핑장4", location:"강원도",campNo:1}
+
     ])
     //전체 날씨 데이터
-    const [allWeatherData, setAllWeatherData] = useState([{ locale: "부산광역시", variable: "눈" },
-        { locale: "대구광역시", variable: "눈" },
-        { locale: "대전광역시", variable: "눈" },
-        { locale: "강원도", variable: "비" },
-        { locale: "광주광역시", variable: "햇빛" },
-        { locale: "경기도", variable: "비" },
-        { locale: "인천광역시", variable: "구름" },
-        { locale: "제주특별자치도", variable: "눈" },
-        { locale: "충청북도", variable: "햇빛" },
-        { locale: "경상북도", variable: "눈" },
-        { locale: "전라북도", variable: "햇빛" },
-        { locale: "세종특별자치시", variable: "눈" },
-        { locale: "충청남도", variable: "햇빛" },
-        { locale: "경상남도", variable: "눈" },
-        { locale: "전라남도", variable: "구름" },
-        { locale: "울산광역시", variable: "구름" },
-        { locale: "서울특별시", variable: "구름" }]);
-
+    const [allWeatherData, setAllWeatherData] = useState([]);
 
     //지역 선택 시 locale 변경, hover 시 hoverLocale 변경
     const [locale, setLocale] = useState();
     const [hoverLocale, setHoverLocale] = useState();
+    const [date, setDate] = useState();
 
-    useEffect(()=>{ //해당 컴포넌트 처음 불러올 때 api에서 전체 날씨 정보 가져오고, 전체의 대한 캠핑장 데이터 가져옴
-        //차후 api로 불러와서 전체 weatherData와 전체 BestCampData 넣어줌
-        // setAllWeatherData();
-        // setBestCampData();
+    useEffect(()=>{ 
+        const currentDate = new Date();
+        const year = currentDate.getFullYear();
+        const month = String(currentDate.getMonth() + 1).padStart(2, '0'); // 월은 0부터 시작하므로 1을 더함
+        const day = String(currentDate.getDate()).padStart(2, '0');
+        const date = `${year}-${month}-${day}`;
+        setDate(date);
+
+        getBest4(date).then(result=>{
+            setBestCampData(result.data);
+        }).catch(error=>{
+
+        })
+        getAllWeather(date).then(result=>{
+            setAllWeatherData(result.data);
+        }).catch(error=>{
+
+        })
     }, [])
 
     useEffect(() => {//전체 날씨 데이터 변경 시 {지역 : 날씨} 형태로 변환 후 MapData 저장
-        const items = allWeatherData.reduce((acc, item) => {
-            return Object.assign(Object.assign({}, acc), { [item.locale]: item.variable });
-        }, {});
-        setMapData(items);
+        if(allWeatherData.length > 0){
+            const items = allWeatherData.reduce((acc, item) => {
+                acc[item.region] = item.weather;
+                return acc;
+            }, {});
+            setMapData(items);
+        }
     }, [allWeatherData]);
+
 
     useEffect(() => {//지역 클릭 시 locale이 해당 지역 id로 변경할 때 자동으로 BestCampData 변경
         // axios로 setBestCampData() 변경 axios.get("url", locale(차후 지역 번호로 변경))
-        if(locale === "gangwon"){
-            setBestCampData([{name : "강원도 캠핌장1", location : "변경테스트1",campNo:1},
-            {name : "강원도 캠핌장2", location : "변경테스트2",campNo:1},
-            {name : "강원도 캠핌장3", location : "변경테스트3",campNo:1},
-            {name : "강원도 캠핌장4", location : "변경테스트4",campNo:1}
-            ])
+        if(locale != null){
+            getBest4ByRegion(locale).then(result=>{
+                setBestCampData(result.data);
+            }).catch(error=>{
+
+            })
         }
-        
     }, [locale]);
+
+    useEffect(()=>{
+        console.log(mapData)
+    }, [mapData])
 
     const handleLocationMouseOver = (event) => {
         let current = event.target.id;
@@ -105,7 +102,6 @@ export const MainMapCamp = () => {
             left: event.clientX + 30,
         };
         setTooltipStyle(tooltipStyle);
-        //setLocale(event.target.id) 로 지역 id 가져오기
         let current = event.target.id;
         setLocale(current);
          
@@ -116,7 +112,9 @@ export const MainMapCamp = () => {
                 <div className="w-full md:w-1/2 flex items-center justify-center bg-gray-100">
                     <div className="w-3/5 ">
                         <SouthKoreaSvgMap data={mapData} setColorByCount={setColorByWeather} onLocationMouseOver={handleLocationMouseOver} onLocationMouseOut={handleLocationMouseOut} onLocationMouseMove= {handleLocationMouseMove} onLocationClick={handleLocationClick}/>
-                        {isOpen && <WeatherModal tooltipStyle={tooltipStyle} region={hoverLocale} />}
+                        {isOpen &&  <div className="w-72 h-72 flex flex-col border border-solid border-black fixed rounded-3xl min-w-20 p-3 bg-white text-black" style={tooltipStyle}>
+                        <WeatherInfo region={hoverLocale}/> {/*특정 지역 날씨 데이터 */}
+        </               div>}
                     </div>
                 </div>
                 <div className="mt-5 md:mt-0 w-full md:w-1/2">

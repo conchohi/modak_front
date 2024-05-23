@@ -12,9 +12,9 @@ const SideNav = () => {
   // 타입 데이터를 배열로 관리
   const types =[
     { id: "", name: "전체" },
+    { id: "일반캠핑장", name: "일반캠핑장" },
     { id: "글램핑", name: "글램핑" },
     { id: "카라반", name: "카라반" },
-    { id: "오지노지", name: "오지/노지" },
     { id: "오토캠핑", name: "오토캠핑" },
   ];
 
@@ -56,7 +56,7 @@ const SideNav = () => {
                             onChange={(e)=>{
                               setSelectType(e.target.id);
                             }}
-                            value={typeElement.name} defaultChecked={typeElement.name==="전체"?true:(typeElement.name===type?true:false)}/>
+                            value={typeElement.name} defaultChecked={typeElement.name==="전체"?true:(typeElement.id===type?true:false)}/>
                           <label htmlFor={typeElement.id} className="ml-1 text-sm">
                             {typeElement.name}
                           </label>

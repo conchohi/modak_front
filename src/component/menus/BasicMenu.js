@@ -8,10 +8,10 @@ import styled from "styled-components";
 
 function BasicMenu(){
     return(
-        <nav className="flex w-full items-center mb-14">
-            <div className="mt-3">
+        <nav className="flex w-full items-center mb-10">
+            <div className="mt-6">
                 <Link to={"/"}>
-                    <img className="w-44 ms-5" src="/img/logo.png" alt="logo image"/>
+                    <img className="w-44 ms-24" src="/img/logo.png" alt="logo image"/>
                 </Link>
             </div>
             
