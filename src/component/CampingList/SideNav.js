@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import useCustomMove from "../../hooks/useCustomMove";
 import { useNavigate } from "react-router-dom";
+import Calendar from "react-calendar";
+import "../../style/Calendar.css"
+import CalendarComponent from "component/Calendar";
 
 const SideNav = () => {
   const [showType, setShowType] = useState(false);
@@ -96,6 +99,8 @@ const SideNav = () => {
             </div>
           )}
         </div>
+        <CalendarComponent/>
+
       </div>
     </div>
   );
