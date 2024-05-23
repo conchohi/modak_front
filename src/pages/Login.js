@@ -17,9 +17,9 @@ const Login = () => {
     const [idValid, setIdValid] = useState(false);
     const [passwordValid, setPasswordValid] = useState(false);
 
+
     const [isOpen, setIsOpen] = useState(false);
     const [message, setMessage] = useState("");
-
     const navigate = useNavigate();
 
     const customCallback = ()=>{

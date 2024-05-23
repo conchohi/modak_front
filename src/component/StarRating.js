@@ -23,7 +23,7 @@ const StarRating = ({ rating, onRatingChange }) => {
         return (
           <span
             key={index}
-            className="cursor-pointer"
+            className="star cursor-pointer"
             onMouseEnter={() => onMouseEnter(starNumber)}
             onMouseLeave={onMouseLeave}
             onClick={() => onClick(starNumber)}
