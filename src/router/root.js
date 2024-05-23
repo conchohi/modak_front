@@ -1,6 +1,6 @@
 import { Suspense, lazy } from "react";
 import Loading from "../component/Loading";
-const { createBrowserRouter } = require("react-router-dom");
+import { createBrowserRouter } from "react-router-dom";
 
 const TodoIndex = lazy(() => import("../pages/IndexPage"));
 const FindId = lazy(() => import("../pages/find/FindIdPage"));
@@ -10,7 +10,8 @@ const Login = lazy(() => import("../pages/Login"));
 const MyPage = lazy(() => import("../pages/MyPage"));
 const List = lazy(() => import("../pages/CampingList/CampingList"));
 const CampReview = lazy(() => import("../pages/CampReview"));
-const Test = lazy(() => import("../pages/TestPage.js"));
+const CampReviewDetail = lazy(() => import("../pages/CampReviewDetail"));
+const WriteReviewPage = lazy(() => import("../pages/WriteReviewPage")); // 변경
 
 const root = createBrowserRouter([
   {
@@ -62,7 +63,7 @@ const root = createBrowserRouter([
     ),
   },
   {
-    path: "/List",
+    path: "/list",
     element: (
       <Suspense fallback={<Loading />}>
         <List />
@@ -75,16 +76,24 @@ const root = createBrowserRouter([
       <Suspense fallback={<Loading />}>
         <CampReview />
       </Suspense>
-    )
+    ),
   },
   {
-    path: "/test",
+    path: "/campreview/:id",
     element: (
       <Suspense fallback={<Loading />}>
-        <Test />
+        <CampReviewDetail />
       </Suspense>
     ),
-  }
+  },
+  {
+    path: "/write-review",
+    element: (
+      <Suspense fallback={<Loading />}>
+        <WriteReviewPage />
+      </Suspense>
+    ),
+  },
 ]);
 
 export default root;
