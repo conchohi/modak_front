@@ -33,7 +33,7 @@ function TopMenu() {
           </Link>
         </li>
         <li className="text-center px-3 w-1/4 md:w-1/6">
-          <Link className="py-1" to="/">
+          <Link className="py-1" to="/campreview">
             커뮤니티
           </Link>
         </li>
