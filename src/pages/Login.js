@@ -5,6 +5,9 @@ import { KAKAO_AUTH_URL } from '../OAuth';
 import axios from 'axios';
 import ModalComponent from 'component/common/ModalComponent';
 import { useNavigate } from 'react-router-dom';
+import '../../src/App.css'
+import '../../src/pages/Authentication/SignUp/style.css'
+
 
 const Login = () => {
     // 아이디와 비밀번호를 상태로 관리합니다
@@ -181,9 +184,12 @@ const Login = () => {
                         <p className="mt-4 text-center text-sm text-gray-500">
                             SNS 계정으로 로그인하기
                         </p>
-                        <a href={KAKAO_AUTH_URL} className='kakaobtn'>
-                            <img src={process.env.PUBLIC_URL + `assets/Kakao.png`}/>
-                        </a>    
+                        <div className="flex justify-center items-center mt-3">
+                        <div className='sign-up-content-sign-in-button-box'>
+                            <a href='http://localhost:4040/oauth2/authorization/kakao'> <div className='kakao-sign-in-button'/> </a>
+                            <a href='http://localhost:4040/oauth2/authorization/naver'><div className='naver-sign-in-button'/> </a>
+                        </div>
+                        </div>
                     </div>
                 </div>
             </BasicLayout>
