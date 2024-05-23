@@ -6,23 +6,23 @@ import { IoIosArrowDropleftCircle,IoIosArrowDroprightCircle } from "react-icons/
 import useCustomMove from "../../hooks/useCustomMove";
 
 const items = [ 
-{ img: "seoul.png", name: "서울" },
-{ img: "busan.png", name: "부산" },
-{ img: "daegu.png", name: "대구" },
-{ img: "incheon.png", name: "인천" },
-{ img: "gwangju.png", name: "광주" },
-{ img: "daejeon.png", name: "대전" },
-{ img: "ulsan.png", name: "울산" },
-{ img: "sejong.png", name: "세종" },
-{ img: "gyeonggi.png", name: "경기" },
-{ img: "gangwon.png", name: "강원" },
-{ img: "chungbuk.png", name: "충북" },
-{ img: "chungnam.png", name: "충남" },
-{ img: "jeonbuk.png", name: "전북" },
-{ img: "jeonnam.png", name: "전남" },
-{ img: "gyeongbuk.png", name: "경북" },
-{ img: "gyeongnam.png", name: "경남" },
-{ img: "jeju.png", name: "제주"}]
+{ img: "seoul.png", name: "서울", id:"서울"},
+{ img: "busan.png", name: "부산", id:"부산"},
+{ img: "daegu.png", name: "대구", id:"대구"},
+{ img: "incheon.png", name: "인천",id: "인천" },
+{ img: "gwangju.png", name: "광주" ,id:"광주"},
+{ img: "daejeon.png", name: "대전" ,id:"대전"},
+{ img: "ulsan.png", name: "울산",id:"울산" },
+{ img: "sejong.png", name: "세종",id:"세종" },
+{ img: "gyeonggi.png", name: "경기",id:"경기" },
+{ img: "gangwon.png", name: "강원", id:"강원"},
+{ img: "chungbuk.png", name: "충북", id: "충청북도"},
+{ img: "chungnam.png", name: "충남", id: "충청남도"},
+{ img: "jeonbuk.png", name: "전북", id: "전라북도"},
+{ img: "jeonnam.png", name: "전남", id: "전라남도"},
+{ img: "gyeongbuk.png", name: "경북", id: "경상북도" },
+{ img: "gyeongnam.png", name: "경남", id: "경상남도" },
+{ img: "jeju.png", name: "제주", id:"제주"}]
 
 const TrendSlider = () => {
   const slickRef = useRef(null);
@@ -63,7 +63,7 @@ const TrendSlider = () => {
       <Slider {...settings} ref={slickRef}>
         {items.map((item, index) => (
           <div className="flex flex-col justify-center text-center items-center" key={index}>
-            <div className="cursor-pointer" onClick={()=>moveToList({region:item.name, type:type, searchTerm:searchTerm})}>
+            <div className="cursor-pointer" onClick={()=>moveToList({region:item.id, type:type, searchTerm:searchTerm})}>
               <img src={`/img/region/${item.img}`} alt={item.name} />
               <p className="text-sm md:text-base">{item.name}</p>
             </div>

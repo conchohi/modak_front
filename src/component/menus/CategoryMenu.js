@@ -28,9 +28,9 @@ function CategoryMenu(){
                     </li>
 
                     <li className="">
-                        <Link to={"/camp/list?type=오지노지"} className="flex flex-col text-center">
+                        <Link to={"/camp/list?type=일반캠핑장"} className="flex flex-col text-center">
                             <img src="/img/category/category4.png"/>
-                            오지/노지
+                            일반캠핑장
                         </Link>
                     </li>
 
