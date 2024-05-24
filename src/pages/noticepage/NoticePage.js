@@ -118,7 +118,7 @@ function Announcements() {
         setAnnouncements(response.data);
       })
       .catch((error) => {
-        console.error("There was an error fetching the announcements!", error);
+        console.error("공지사항을 불러오는 중 오류가 발생했습니다.", error);
       });
   }, []);
 
