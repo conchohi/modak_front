@@ -15,6 +15,9 @@ const CampReviewDetail = lazy(() => import("../pages/CampReviewDetail"));
 const WriteReviewPage = lazy(() => import("../pages/WriteReviewPage")); // 변경
 const NoticePage = lazy(() => import("../pages/noticepage/NoticePage"));
 const FAQPage = lazy(() => import("../pages/noticepage/FAQPage"));
+const CampingInfo = lazy(() =>
+  import("../pages/campingInformation/CampingInfo")
+);
 
 const root = createBrowserRouter([
   {
@@ -104,7 +107,6 @@ const root = createBrowserRouter([
         <NoticePage />
       </Suspense>
     ),
-
   },
   {
     path: "/campreview/:id",
@@ -120,14 +122,21 @@ const root = createBrowserRouter([
       <Suspense fallback={<Loading />}>
         <WriteReviewPage />
       </Suspense>
-    )
-},
+    ),
+  },
   {
     path: "/campreview",
     element: (
       <Suspense fallback={<Loading />}>
         <CampReview />
-
+      </Suspense>
+    ),
+  },
+  {
+    path: "/campinfo",
+    element: (
+      <Suspense fallback={<Loading />}>
+        <CampingInfo />
       </Suspense>
     ),
   },

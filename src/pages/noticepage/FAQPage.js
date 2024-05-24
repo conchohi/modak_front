@@ -3,6 +3,7 @@ import TopMenu from "../../component/menus/TopMenu";
 import BasicMenu from "../../component/menus/BasicMenu";
 import Footer from "../../component/footer/Footer";
 import NoticeSideNav from "./NoticeSideNav";
+import BasicLayout from "layouts/BasicLayout";
 
 function Announcements() {
   const [announcements, setAnnouncements] = React.useState([]);
@@ -65,21 +66,20 @@ function Announcements() {
 function FAQPage() {
   return (
     <>
-      <BasicMenu />
-      <TopMenu />
-      <div className="flex">
-        <div className="w-1/12">
-          {" "}
-          {/* 사이드 네비게이션 바의 너비를 지정 */}
-          <NoticeSideNav />
+      <BasicLayout>
+        <div className="flex">
+          <div className="w-2/12">
+            {" "}
+            {/* 사이드 네비게이션 바의 너비를 지정 */}
+            <NoticeSideNav />
+          </div>
+          <div className="flex-1">
+            {" "}
+            {/* FAQ 컨텐츠 영역 */}
+            <Announcements />
+          </div>
         </div>
-        <div className="flex-1">
-          {" "}
-          {/* FAQ 컨텐츠 영역 */}
-          <Announcements />
-        </div>
-      </div>
-      <Footer />
+      </BasicLayout>
     </>
   );
 }
