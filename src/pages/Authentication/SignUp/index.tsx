@@ -141,7 +141,7 @@ export default function SignUp() {
         setIdCheck(false);
         if (!idPattern.test(value)) {
             setIdError(true);
-            setIdMessage('아이디는 특수문자/문자/숫자 포함 형태의 5~10자리여야 합니다.');
+            setIdMessage('아이디는 문자/숫자 포함 형태의 5~10자리여야 합니다.');
         } else {
             setIdError(false);
             setIdMessage('');
@@ -157,19 +157,37 @@ export default function SignUp() {
     const onPasswordChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
         const { value } = event.target;
         setPassword(value);
-        setPasswordMessage('');
+        if (!passwordPattern.test(value)) {
+            setPasswordError(true);
+            setPasswordMessage('영문, 숫자 포함 8자 이상 입력해주세요.');
+        } else {
+            setPasswordError(false);
+            setPasswordMessage('');
+        }
     };
 
     const onPasswordCheckChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
         const { value } = event.target;
         setPasswordCheck(value);
-        setPasswordCheckMessage('');
+        if (!passwordPattern.test(value)) {
+            setPasswordCheckError(true);
+            setPasswordCheckMessage('영문, 숫자 포함 8자 이상 입력해주세요.');
+        } else {
+            setPasswordCheckError(false);
+            setPasswordCheckMessage('');
+        }
     };
 
     const onEmailChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
         const { value } = event.target;
         setEmail(value);
-        setEmailMessage('');
+        if (!emailPattern.test(value)) {
+            setEmailError(true);
+            setEmailMessage('영문, 숫자 포함 8자 이상 입력해주세요.');
+        } else {
+            setEmailError(false);
+            setEmailMessage('');
+        }
     };
 
     const onCertificationNumberChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
