@@ -5,17 +5,19 @@
     border-radius: 10px;
     position: relative;
     z-index: 1;
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
 .react-calendar__navigation {
     background-color: rgba(251, 255, 133, 0.887);
     padding-top: 5px;
     border-radius: 7px;
+
 }
 
 .react-calendar__navigation button {
     pointer-events: auto; /* none에서 auto로 수정 */
+    min-width: 25px;
 }
 
 /* 1. 현재 날짜 스타일 */
@@ -33,8 +35,7 @@
 }
 
 /* 3. 요일 section 커스텀 */
-.react-calendar__month-view__weekdays {
-}
+
 .react-calendar__month-view__weekdays abbr {
     color: #999; /* 글자색 */
     font-size: 15px; /* 글자 크기 */
@@ -87,6 +88,7 @@
     cursor: pointer;
     width: 200%;
     margin-top: 10px;
+
   }
   
   .calendar-dropdown-button:hover {
