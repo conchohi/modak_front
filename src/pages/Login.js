@@ -33,7 +33,7 @@ const Login = () => {
         setId(e.target.value);
         const regex =
             /^(?=.*[a-zA-Z])[-a-zA-Z0-9_.]{5,10}$/; // 아이디 정규식 : 문자/숫자 포함 형태의 2~10자리 이내 
-        if(regex.test(id)){
+        if(regex.test(e.target.value)){
             setIdValid(true);
         } else{
             setIdValid(false);
@@ -45,7 +45,7 @@ const Login = () => {
         setPassword(e.target.value);
         const regex =
             /^(?=.*\d)(?=.[a-zA-Z])[0-9a-zA-Z!@#$%^&*]{8,13}$/; // 비밀번호 정규식 : 특수문자/문자/숫자 포함 형태의 8~20자리
-        if(regex.test(password)) {
+        if(regex.test(e.target.value)) {
             setPasswordValid(true);
         } else{
             setPasswordValid(false);
