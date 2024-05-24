@@ -30,11 +30,11 @@ function MyPageComponent(){
     return(
         <> 
             <div className="w-full flex mt-16">
-                <div className="w-1/6">
-                    {/* 여기에 사이드 네비 */}
+                {/* <div className="w-1/6">
+
                     <MySideMenu/>
-                </div>
-                <div className="w-5/6 flex flex-col">
+                </div> */}
+                <div className="w-5/6 mx-auto flex flex-col">
                     <div className="w-full flex border-b-2 pb-10 border-gray-200">
                         <div className="w-1/3 pe-10 border-e border-gray-200 border-dotted">
                             <ProfileCard nickname={userData.nickname} imageName={userData.profileImage}/>
