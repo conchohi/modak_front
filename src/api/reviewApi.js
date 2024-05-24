@@ -12,3 +12,16 @@ export const getReviewList = async (page = 1, size = 50) => {
         throw error;
     }
 };
+
+export const registerReview = async (write) =>{
+    const token = localStorage.getItem('access')
+    try {
+        const response = await axios.post(`${prefix}`, write, {headers:{
+            access : token
+        }});
+        return response.data;
+    } catch (error) {
+        console.error("Error while fetching review list:", error);
+        throw error;
+    }
+}
