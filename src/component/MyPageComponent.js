@@ -6,9 +6,9 @@ import FavoriteList from "./list/FavoriteList";
 import MySideMenu from "./menus/MySideMenu";
 import { getUserData } from "api/userApi";
 import { getAccessToken } from "api/reissue";
+
 function MyPageComponent(){
     const [userData, setUserDate] = useState({favorites:[]});
-
     useEffect(()=>{
         getUserData().then(result=>{
             setUserDate(result)

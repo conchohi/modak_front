@@ -100,7 +100,7 @@ const Login = () => {
                                         아이디
                                     </label>
                                     <div className="text-sm">
-                                        <a href="/find/id" className="font-semibold text-indigo-400 hover:text-indigo-500">
+                                        <a href="/find/id" className="font-semibold text-indigo-400 hover:text-indigo-600">
                                             아이디를 잊으셨나요?
                                         </a>
                                     </div>
@@ -134,7 +134,7 @@ const Login = () => {
                                         비밀번호
                                     </label>
                                     <div className="text-sm">
-                                        <a href="/find/pwd" className="font-semibold text-indigo-600 hover:text-indigo-500">
+                                        <a href="/find/pwd" className="font-semibold text-indigo-400 hover:text-indigo-600">
                                             비밀번호를 잊으셨나요?
                                         </a>
                                     </div>
@@ -166,7 +166,7 @@ const Login = () => {
                                 <button
                                     onClick={handleSubmit}
                                     type="submit"
-                                    className="flex w-full justify-center rounded-md bg-indigo-600 px-4 py-2 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                                    className="flex w-full justify-center rounded-md bg-orange-400 px-4 py-2 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-orange-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                                 >
                                     로그인
                                 </button>
@@ -174,7 +174,7 @@ const Login = () => {
                         </form>
 
                         <p className="mt-4 text-center text-sm text-gray-500">
-                            <a href="/join" className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">
+                            <a href="/join" className="font-semibold leading-6 text-orange-300 hover:text-orange-600">
                                 회원가입하러 가기
                             </a>
                         </p>
