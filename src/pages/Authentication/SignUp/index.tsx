@@ -82,7 +82,7 @@ export default function SignUp() {
         if(!responseBody) return;
         const { code } = responseBody;
         if (code === ResponseCode.VALIDATION_FAIL) alert('아이디와 이메일을 모두 입력하세요.');
-        if (code !== ResponseCode.DUPLICATE_ID) {
+        if (code === ResponseCode.DUPLICATE_ID) {
             setIdError(true);
             setIdMessage('이미 사용중인 아이디입니다.');
             setIdCheck(false);
