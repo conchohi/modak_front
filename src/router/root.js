@@ -16,6 +16,7 @@ const CampReviewDetail = lazy(() => import("../pages/CampReviewDetail"));
 const WriteReviewPage = lazy(() => import("../pages/WriteReviewPage")); // 변경
 const NoticePage = lazy(() => import("../pages/noticepage/NoticePage"));
 const FAQPage = lazy(() => import("../pages/noticepage/FAQPage"));
+const CampingFoodPage = lazy(() => import("../pages/CampingFoodPage"));
 
 const CampingInfo = lazy(() =>
   import("../pages/campingInformation/CampingInfo")
@@ -146,6 +147,15 @@ const root = createBrowserRouter([
     ),
   },
   {
+
+    path: "/campFood",
+    element: (
+      <Suspense fallback={<Loading />}>
+        <CampingFoodPage />
+      </Suspense>
+    ),
+  },
+
     path: "/campinfo",
     element: (
       <Suspense fallback={<Loading />}>
@@ -162,6 +172,7 @@ const root = createBrowserRouter([
       </Suspense>
     ),
   }
+
 ]);
 
 export default root;
