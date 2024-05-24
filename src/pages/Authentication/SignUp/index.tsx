@@ -311,7 +311,7 @@ export default function SignUp() {
                                 <InputBox ref={certificationNumberRef} title='이메일 인증번호' placeholder='인증번호 4자리를 입력해주세요.' type='text' value={certificationNumber} onChange={onCertificationNumberChangeHandler} isErrorMessage={isCertificationNumberError} message={certificationNumberMessage} buttonTitle='인증확인' onButtonClick={onCertificationNumberButtonClickHandler} onKeyDown={onCertificationNumberKeyDownHandler}/> 
                             </div> 
                             <div className='sign-up-content-button-box'>
-                                <div className={`${signUpButtonClass} w-full`} onClick={onSignUpButtonClickHandler}>{'회원가입'}</div>
+                                <div className={`${signUpButtonClass}`} onClick={onSignUpButtonClickHandler}>{'회원가입'}</div>
                                 <div className='text-link-lg w-full' onClick={onSignInButtonClickHandler}>{'로그인'}</div>
                             </div> 
                         </div>

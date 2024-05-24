@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import React, {useState, useEffect} from "react";
 import Dropdown from "../dropdown/Dropdown";
-import { MdLogin } from "react-icons/md";
+import { MdLogin, MdLogout } from "react-icons/md";
 import { FaUserPlus, FaUser } from "react-icons/fa6";
 import { IoIosMenu } from "react-icons/io";
 import axios from "axios";
@@ -80,10 +80,12 @@ function BasicMenu(){
 
 
             <div className="flex sm:hidden w-3/4 justify-end p-4 text-sm">
-                    <Dropdown menuIcon={<IoIosMenu size="40"/>} menus={[{icon:<FaUser size="20"/>, link:"/myPage"},
+                    {!isLogin ? <Dropdown menuIcon={<IoIosMenu size="40"/>} menus={[{icon:<FaUser size="20"/>, link:"/myPage"},
                         {icon:<FaUserPlus size="20"/>, link:"/join"},
                         {icon:<MdLogin size="20"/>, link:"/login"}
-                    ]}/>
+                    ]}/> : <Dropdown menuIcon={<IoIosMenu size="40"/>} menus={[{icon:<FaUser size="20"/>, link:"/myPage"}, {
+                        icon:<MdLogout size="20"/>, callback:logoutFunction
+                    }]}/>}
             </div>
         </nav>
     );
