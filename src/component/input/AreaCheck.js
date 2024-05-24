@@ -4,6 +4,77 @@ import React, { useEffect, useState } from 'react';
 import useCustomMove from '../../hooks/useCustomMove';
 import { useNavigate } from 'react-router-dom';
 
+
+const regions = [{
+    id : "서울시",
+    name : "서울"
+},
+{
+    id : "경기도",
+    name : "경기"
+},
+{
+    id : "부산시",
+    name : "부산"
+},
+{
+    id : "대구시",
+    name : "대구"
+},
+{
+    id : "인천시",
+    name : "인천"
+},
+{
+    id : "광주시",
+    name : "광주"
+},
+{
+    id : "대전시",
+    name : "대전"
+},
+{
+    id : "울산시",
+    name : "울산"
+},
+{
+    id : "세종시",
+    name : "세종"
+},
+{
+    id : "강원도",
+    name : "강원"
+},
+{
+    id : "충청북도",
+    name : "충북"
+},
+{
+    id : "충청남도",
+    name : "충남"
+},
+{
+    id : "전라북도",
+    name : "전북"
+},
+{
+    id : "전라남도",
+    name : "전남"
+},
+{
+    id : "경상북도",
+    name : "경북"
+},
+{
+    id : "경상남도",
+    name : "경남"
+},
+{
+    id : "제주도",
+    name : "제주"
+},
+
+]
 function AreaCheck() {
     //선택된 지역의 값 설정
     const [region, setRegion] = useState("");
@@ -52,37 +123,22 @@ function AreaCheck() {
 
             {isOpen && (
             <div className="absolute z-10 mt-2 w-28 bg-white border border-gray-300 rounded-md shadow-lg">
-                <ul>
+                <ul className='overflow-y-scroll h-40'>
                     <li
                         onClick={() => handleItemClick('')}
                         className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
                     >
                         전체
                      </li>
-                    <li
-                        onClick={() => handleItemClick('서울')}
-                        className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
-                    >
-                        서울
-                    </li>
-                    <li
-                        onClick={() => handleItemClick('경기')}
-                        className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
-                    >
-                        경기
-                    </li>
-                    <li
-                        onClick={() => handleItemClick('인천')}
-                        className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
-                    >
-                        인천
-                    </li>
-                    <li
-                        onClick={() => handleItemClick('경남')}
-                        className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
-                    >
-                        경남
-                    </li>
+                    {regions.map(region=>{
+                        return(
+                            <li onClick={() => handleItemClick(region.id)}
+                            className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
+                        >
+                            {region.name}
+                            </li>
+                        )
+                    })}
                 </ul>
             </div>
             )}

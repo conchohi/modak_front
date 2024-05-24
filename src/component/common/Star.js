@@ -15,5 +15,6 @@ const Star = ({score}) => {
         </div>
     );
 }
+
  
 export default Star;

@@ -13,7 +13,7 @@ const PageComponent = ({serverData, moveToList}) => {
   
         {
            serverData.data.pageNumList.map(pageNum => 
-                <div  key={pageNum} className={`cursor-pointer m-2 p-2 w-8  text-center rounded-full shadow-md ${serverData.data.current === pageNum? 'bg-gray-500 text-white':''}`}
+                <div  key={pageNum} className={`cursor-pointer m-2 p-2  text-center rounded-full shadow-md ${serverData.data.current === pageNum? 'bg-gray-500 text-white':''}`}
                   onClick={() => moveToList( {page:pageNum,  region:region, type:type, searchTerm:searchTerm})}>  
                  {pageNum}
                 </div>  )

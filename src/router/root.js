@@ -9,6 +9,7 @@ const SignUp = lazy(() => import("../pages/Authentication/SignUp/index.tsx"));
 const Login = lazy(() => import("../pages/Login"));
 const MyPage = lazy(() => import("../pages/MyPage"));
 const List = lazy(() => import("../pages/CampingListPage.js"));
+const ListByWeather = lazy(() => import("../pages/CampingListByWeatherPage"));
 const Detail = lazy(() => import("../pages/CampingDetailPage.js"));
 const CampReview = lazy(() => import("../pages/CampReview"));
 const CampReviewDetail = lazy(() => import("../pages/CampReviewDetail"));
@@ -16,6 +17,13 @@ const WriteReviewPage = lazy(() => import("../pages/WriteReviewPage")); // ë³€ê²
 const NoticePage = lazy(() => import("../pages/noticepage/NoticePage"));
 const FAQPage = lazy(() => import("../pages/noticepage/FAQPage"));
 const CampingFoodPage = lazy(() => import("../pages/CampingFoodPage"));
+
+const CampingInfo = lazy(() =>
+  import("../pages/campingInformation/CampingInfo")
+);
+
+
+const AccessToken = lazy(() => import("../pages/social/getAccessPage"));
 
 const root = createBrowserRouter([
   {
@@ -75,6 +83,14 @@ const root = createBrowserRouter([
     ),
   },
   {
+    path: "/camp/listByWeather",
+    element: (
+      <Suspense fallback={<Loading />}>
+        <ListByWeather />
+      </Suspense>
+    ),
+  },
+  {
     path: "/notice",
     element: (
       <Suspense fallback={<Loading />}>
@@ -105,7 +121,6 @@ const root = createBrowserRouter([
         <NoticePage />
       </Suspense>
     ),
-
   },
   {
     path: "/campreview/:id",
@@ -121,18 +136,18 @@ const root = createBrowserRouter([
       <Suspense fallback={<Loading />}>
         <WriteReviewPage />
       </Suspense>
-    )
-},
+    ),
+  },
   {
     path: "/campreview",
     element: (
       <Suspense fallback={<Loading />}>
         <CampReview />
-
       </Suspense>
     ),
   },
   {
+
     path: "/campFood",
     element: (
       <Suspense fallback={<Loading />}>
@@ -140,6 +155,24 @@ const root = createBrowserRouter([
       </Suspense>
     ),
   },
+
+    path: "/campinfo",
+    element: (
+      <Suspense fallback={<Loading />}>
+        <CampingInfo />
+      </Suspense>
+    ),
+  },
+  {
+    path: "/getAccess",
+    element: (
+      <Suspense fallback={<Loading />}>
+        <AccessToken />
+
+      </Suspense>
+    ),
+  }
+
 ]);
 
 export default root;

@@ -1,3 +1,5 @@
+
+
 .primary-button-lg{
   border-radius: 6px;
   padding: 8px 24px;
@@ -6,7 +8,7 @@
   justify-content: center;
   align-items: center;
   
-  background-color: rgba(58,87,232,1);
+  background-color: rgb(251 146 60);
   
   color: rgba(255,255,255,1);
 
@@ -18,7 +20,7 @@
 }
 
 .primary-button-lg:hover {
-  opacity: 0.95;
+  opacity: 0.85;
 }
 
 .disable-button-lg{

@@ -96,15 +96,14 @@
 
 // export default NoticePage;
 
-
 import React, { useEffect } from "react";
 import axios from "axios";
 import NoticeSideNav from "./NoticeSideNav";
 import BasicLayout from "../../layouts/BasicLayout";
 
-export const API_SERVER_HOST = 'http://localhost:4040'
+export const API_SERVER_HOST = "http://localhost:4040";
 
-const prefix = `${API_SERVER_HOST}/api/notice`
+const prefix = `${API_SERVER_HOST}/api/notice`;
 
 function Announcements() {
   const [announcements, setAnnouncements] = React.useState([]);
@@ -112,17 +111,22 @@ function Announcements() {
 
   useEffect(() => {
     // API 호출을 통해 공지사항 데이터를 가져옵니다.
-    axios.get(`${prefix}/noticeAll`)
-      .then(response => {
+    axios
+      .get(`${prefix}/noticeAll`)
+      .then((response) => {
+        console.log(response.data);
         setAnnouncements(response.data);
       })
-      .catch(error => {
+      .catch((error) => {
         console.error("There was an error fetching the announcements!", error);
       });
   }, []);
 
   const handleAnnouncementClick = (announcement) => {
-    if (selectedAnnouncement && selectedAnnouncement.noticeNo === announcement.noticeNo) {
+    if (
+      selectedAnnouncement &&
+      selectedAnnouncement.noticeNo === announcement.noticeNo
+    ) {
       setSelectedAnnouncement(null);
     } else {
       setSelectedAnnouncement(announcement);
