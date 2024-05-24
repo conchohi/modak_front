@@ -34,7 +34,10 @@ function BasicMenu(){
           }
         } catch (error) {
           console.error('로그아웃 오류', error);
-          alert('서버 오류로 인해 로그아웃에 실패했습니다.');
+          localStorage.removeItem('access');
+            
+          // 홈으로 이동
+          window.location.href = '/';
         }
       };
 

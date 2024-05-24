@@ -32,7 +32,7 @@ const Login = () => {
     const handleId = (e) => {
         setId(e.target.value);
         const regex =
-            /^(?=.*[a-zA-Z])[-a-zA-Z0-9_.]{5,10}$/; // 아이디 정규식 : 특수문자/문자/숫자 포함 형태의 2~10자리 이내 
+            /^(?=.*[a-zA-Z])[-a-zA-Z0-9_.]{5,10}$/; // 아이디 정규식 : 문자/숫자 포함 형태의 2~10자리 이내 
         if(regex.test(id)){
             setIdValid(true);
         } else{
@@ -156,7 +156,7 @@ const Login = () => {
                                 <div className='errorMessageWrap'>
                                 {
                                     !passwordValid && password.length > 0 &&(
-                                        <div>영문, 숫자, 특수문자 포함 8자 이상 입력해주세요.</div>
+                                        <div>영문, 숫자 포함 8자 이상 입력해주세요.</div>
                                     )
                                 }
                             </div>
