@@ -4,6 +4,7 @@ import WeatherInfo from "../weather/WeatherInfo";
 import MainCampList from "../list/MainCampList";
 import { getBest4, getBest4ByRegion } from "api/campApi";
 import { getAllWeather } from "api/weatherApi";
+import CalendarComponent from "component/Calendar";
 
 
 export const MainMapCamp = () => {
@@ -51,6 +52,19 @@ export const MainMapCamp = () => {
         })
     }, [])
 
+    useEffect(()=>{
+        getBest4(date).then(result=>{
+            setBestCampData(result.data);
+        }).catch(error=>{
+
+        })
+        getAllWeather(date).then(result=>{
+            setAllWeatherData(result.data);
+        }).catch(error=>{
+
+        })
+    }, [date])
+
     useEffect(() => {//전체 날씨 데이터 변경 시 {지역 : 날씨} 형태로 변환 후 MapData 저장
         if(allWeatherData.length > 0){
             const items = allWeatherData.reduce((acc, item) => {
@@ -73,9 +87,6 @@ export const MainMapCamp = () => {
         }
     }, [locale]);
 
-    useEffect(()=>{
-        console.log(mapData)
-    }, [mapData])
 
     const handleLocationMouseOver = (event) => {
         let current = event.target.id;
@@ -111,6 +122,9 @@ export const MainMapCamp = () => {
     return(
             <div className="w-full flex p-2 flex-col md:flex-row mb-10">
                 <div className="w-full md:w-1/2 flex items-center justify-center relative">
+                    <div className="absolute top-3 right-28">
+                        <CalendarComponent callbackFunction={setDate}/>
+                    </div>
                     <div className="absolute bottom-3 right-6 flex flex-row border p-3 rounded-xl shadow-md">
                             <div className="w-11 h-12 flex flex-col justify-center items-center text-center text-sm"><div className="h-6 w-6 rounded-full bg-[#fffeb3]"></div>맑음</div>
                             <div className="w-11 h-12 flex flex-col justify-center items-center text-center text-sm"><div className="h-6 w-6 rounded-full bg-[#e0e0de]"></div>흐림</div>

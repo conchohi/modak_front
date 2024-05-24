@@ -1,15 +1,14 @@
 import React, { useEffect, useState } from "react";
 import ProfileCard from "./card/ProfileCard";
 import BadgeList from "./list/BadgeList";
-import {MyMapCamp} from "./map/MyMapCamp";
 import { Link } from "react-router-dom";
 import FavoriteList from "./list/FavoriteList";
 import MySideMenu from "./menus/MySideMenu";
 import { getUserData } from "api/userApi";
 import { getAccessToken } from "api/reissue";
+
 function MyPageComponent(){
     const [userData, setUserDate] = useState({favorites:[]});
-
     useEffect(()=>{
         getUserData().then(result=>{
             setUserDate(result)
@@ -45,7 +44,7 @@ function MyPageComponent(){
                             <span className="font-bold text-2xl">'{userData.nickname}' 캠핑로그</span>
                             <Link to="/myPage/camp-log" className="text-sm text-gray-400">전체 보기</Link>
                         </div>
-                        <MyMapCamp/>
+
 
                     </div>
                     <div className="w-full flex flex-col border-b-2 py-5 border-gray-200 px-2">

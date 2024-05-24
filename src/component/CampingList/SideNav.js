@@ -99,7 +99,6 @@ const SideNav = () => {
             </div>
           )}
         </div>
-        <CalendarComponent/>
 
       </div>
     </div>

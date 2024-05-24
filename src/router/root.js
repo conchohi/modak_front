@@ -9,6 +9,7 @@ const SignUp = lazy(() => import("../pages/Authentication/SignUp/index.tsx"));
 const Login = lazy(() => import("../pages/Login"));
 const MyPage = lazy(() => import("../pages/MyPage"));
 const List = lazy(() => import("../pages/CampingListPage.js"));
+const ListByWeather = lazy(() => import("../pages/CampingListByWeatherPage"));
 const Detail = lazy(() => import("../pages/CampingDetailPage.js"));
 const CampReview = lazy(() => import("../pages/CampReview"));
 const CampReviewDetail = lazy(() => import("../pages/CampReviewDetail"));
@@ -77,6 +78,14 @@ const root = createBrowserRouter([
     element: (
       <Suspense fallback={<Loading />}>
         <List />
+      </Suspense>
+    ),
+  },
+  {
+    path: "/camp/listByWeather",
+    element: (
+      <Suspense fallback={<Loading />}>
+        <ListByWeather />
       </Suspense>
     ),
   },
