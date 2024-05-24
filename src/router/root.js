@@ -15,9 +15,13 @@ const CampReviewDetail = lazy(() => import("../pages/CampReviewDetail"));
 const WriteReviewPage = lazy(() => import("../pages/WriteReviewPage")); // 변경
 const NoticePage = lazy(() => import("../pages/noticepage/NoticePage"));
 const FAQPage = lazy(() => import("../pages/noticepage/FAQPage"));
+
 const CampingInfo = lazy(() =>
   import("../pages/campingInformation/CampingInfo")
 );
+
+
+const AccessToken = lazy(() => import("../pages/social/getAccessPage"));
 
 const root = createBrowserRouter([
   {
@@ -140,6 +144,15 @@ const root = createBrowserRouter([
       </Suspense>
     ),
   },
+  {
+    path: "/getAccess",
+    element: (
+      <Suspense fallback={<Loading />}>
+        <AccessToken />
+
+      </Suspense>
+    ),
+  }
 ]);
 
 export default root;

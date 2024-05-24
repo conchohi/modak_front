@@ -7,6 +7,7 @@ function checkWeather(weather){
         case "햇빛" : weatherNum = 1; break;
         case "맑음" : weatherNum = 2; break;
         case "흐림" : weatherNum = 3; break;
+        case "박무" : weatherNum = 4; break;
         case "구름" : weatherNum = 5; break;
         case "비" : weatherNum = 6; break;
         case "눈" : weatherNum = 7; break;

@@ -38,7 +38,7 @@ function CampingListComponent(){
     })
     
     useEffect(()=>{
-      getListByRegion({page:page, size:size}).then(result=>{
+      getListByRegion({page:page, size:size, type:type, region:region, searchTerm:searchTerm}).then(result=>{
         setServerData(result);
       })
     }, [])

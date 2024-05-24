@@ -18,7 +18,7 @@ export const isLike = async (campNo) => {
 export const clickLikeApi = async ( campNo ) => {
     const token = localStorage.getItem('access');
 
-    const response = await axios.post(`${prefix}/${campNo}`,{
+    const response = await axios.post(`${prefix}/${campNo}`,{},{
       headers: {
           access: token
       }
