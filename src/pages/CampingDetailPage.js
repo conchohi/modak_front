@@ -14,6 +14,7 @@ import { FaRegHeart, FaHeart} from "react-icons/fa";
 import Facilites from "component/campingDetail/Faciities";
 import { clickLikeApi, clickUnLikeApi, isLike } from "api/favoirtesApi";
 import ModalComponent from "component/common/ModalComponent";
+import { getAccessToken } from "api/reissue";
 
 
 function CampingDetailPage() {
@@ -22,32 +23,64 @@ function CampingDetailPage() {
   const [like, setLike] = useState(false);
 
   const [openModal, setOpenModal] = useState(false);
+
+   
+  const navigate = useNavigate();
+  
   useEffect(()=>{
     getCamp(campNo).then(result=>{
       setCampData(result.data)
       }
     )
+
     if(localStorage.getItem("access")){
       isLike(campNo).then(result=>{
           setLike(result.isLike)
         }
-      )
+      ).catch(error=>{
+        if(error.response.data === 'access token expired'){
+          try{
+            getAccessToken()
+          }catch(error){
+
+          }
+        } else {
+          setOpenModal(true)
+        }
+      })
     }
   }, [campNo])
- 
-  const navigate = useNavigate();
+
 
   const clickLike = () =>{
     clickLikeApi(campNo).then(result=>{
       setLike(true)
     }).catch(error=>{
-      setOpenModal(true)
+      if(error.response.data === 'access token expired'){
+        try{
+            getAccessToken()
+          }catch(error){
+            
+          }
+      } else {
+        setOpenModal(true)
+      }
     })
   }
 
   const clickUnLike = () =>{
     clickUnLikeApi(campNo).then(result=>{
       setLike(false)
+    }).catch(error=>{
+      if(error.response.data === 'access token expired'){
+        try{
+          getAccessToken()
+        }catch(error){
+          
+        }
+      } else {
+        setOpenModal(true)
+      }
     })
   }
 
