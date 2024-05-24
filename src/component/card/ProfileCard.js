@@ -1,4 +1,4 @@
-import ModifyModal from "component/member/ModifyModal";
+import ModifyModal from "component/modal/ModifyModal";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 function ProfileCard({nickname,imageName}){

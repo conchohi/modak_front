@@ -157,7 +157,7 @@ function CampingDetailPage() {
                 </div>
                 <hr className="border-slate-950 mb-5"></hr>
                 {/* 리뷰 */}
-                <ReviewList reviewList={campData.reviewList}/>
+                <ReviewList reviewList={campData.reviewList} campNo={campNo}/>
             </div>
           </div>
 
