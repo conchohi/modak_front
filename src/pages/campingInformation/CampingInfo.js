@@ -66,11 +66,11 @@ function CampingInfo() {
             <CampInfoSideNav />
           </div>
           <div className="flex-1 flex flex-col items-center justify-center bg-white p-11">
-            <div className="max-w-lg w-full bg-white shadow-md rounded-lg overflow-hidden">
+            <div className="max-w-lg w-full bg-slate-50 shadow-md rounded-lg overflow-hidden">
               <img
                 src={`/${cardData[currentCard].imageUrl}`}
                 alt={cardData[currentCard].title}
-                className="w-[50vw] h-[60vh] object-contain"
+                className="w-[70vw] h-[60vh] object-contain"
               />
               <div className="p-5">
                 <h2 className="text-2xl font-bold mb-2">
