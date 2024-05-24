@@ -36,7 +36,11 @@ function BasicMenu(){
           }
         } catch (error) {
           console.error('로그아웃 오류', error);
+          localStorage.removeItem('access');
             
+            // 홈으로 이동
+            window.location.href = '/';
+
         }
       };
 
