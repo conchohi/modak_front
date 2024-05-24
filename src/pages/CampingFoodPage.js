@@ -1,11 +1,18 @@
 import BasicLayout from "layouts/BasicLayout";
 import React from "react";
+import CampInfoSideNav from "./campingInformation/CampInfoSideNav";
 
 function CampingFoodPage() {
     return (
             <BasicLayout>
-            <div className="flex flex-col justify-center items-center w-3/5 h-4/6 m-10">
-                <div className ="font-semibold text-3xl text-center mb-6">간단한 캠핑음식 추천 TOP 5</div>
+            <div className="flex ">
+            <div className="w-2/12 ">
+            {" "}
+            {/* 사이드 네비게이션 바의 너비를 지정 */}
+            <CampInfoSideNav/>
+            </div>
+            <div className=" flex flex-col items-center justify-center w-1/2  m-auto">
+                <div className ="font-semibold text-3xl text-center mt-4  mb-6">간단한 캠핑음식 추천 TOP 5</div>
 
                 <img src="https://images.unsplash.com/photo-1680206893946-e92018016cb0?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
                 className="w-2/4 h-36 mb-6" />
@@ -80,8 +87,11 @@ function CampingFoodPage() {
                     </div>
                 </div>
 
-                <div className="font-semibold text-center">모두 행복한 캠핑되세요:D</div>
+                <div className="font-semibold text-center mb-8">모두 행복한 캠핑되세요:D</div>
+                </div>
             </div>
+
+
             </BasicLayout>
     );
 }

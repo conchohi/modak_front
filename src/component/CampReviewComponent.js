@@ -10,7 +10,7 @@ function CampReviewComponent() {
       rating: 4.8,
       description: "아름다운 경치, 잘 관리된 시설, 친절한 직원. 평화로운 휴식을 위해 강력 추천합니다.",
       reviewer: "John Doe",
-      imageUrl: "/placeholder.svg",
+      imageUrl: "https://images.unsplash.com/photo-1566501248434-6d513596c485?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     },
     {
       id: 2,
@@ -18,7 +18,7 @@ function CampReviewComponent() {
       rating: 4.6,
       description: "숨막히는 풍경, 잘 갖춰진 캠프장, 친절한 직원. 가족 캠핑 여행에 완벽합니다.",
       reviewer: "Sarah Anderson",
-      imageUrl: "/placeholder.svg",
+      imageUrl: "https://images.unsplash.com/photo-1635314924786-f3a501a87458?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     },
     {
       id: 3,
@@ -26,7 +26,7 @@ function CampReviewComponent() {
       rating: 4.9,
       description: "믿을 수 없는 자연 경관, 잘 관리된 캠프장, 지식 있는 직원. 자연 애호가들의 필수 방문지.",
       reviewer: "Emily Wilson",
-      imageUrl: "/placeholder.svg",
+      imageUrl: "https://images.unsplash.com/photo-1516402707257-787c50fc3898?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     },
     {
       id: 4,
@@ -34,7 +34,7 @@ function CampReviewComponent() {
       rating: 4.6,
       description: "숨막히는 풍경, 잘 갖춰진 캠프장, 친절한 직원. 가족 캠핑 여행에 완벽합니다.",
       reviewer: "Sarah Anderson",
-      imageUrl: "/placeholder.svg",
+      imageUrl: "https://images.unsplash.com/photo-1587547131116-a0655a526190?q=80&w=1832&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     },
     {
       id: 5,
@@ -42,7 +42,7 @@ function CampReviewComponent() {
       rating: 4.6,
       description: "숨막히는 풍경, 잘 갖춰진 캠프장, 친절한 직원. 가족 캠핑 여행에 완벽합니다.",
       reviewer: "Sarah Anderson",
-      imageUrl: "/placeholder.svg",
+      imageUrl: "https://images.unsplash.com/photo-1525811902-f2342640856e?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     },
     {
       id: 6,
@@ -50,7 +50,7 @@ function CampReviewComponent() {
       rating: 4.6,
       description: "숨막히는 풍경, 잘 갖춰진 캠프장, 친절한 직원. 가족 캠핑 여행에 완벽합니다.",
       reviewer: "Sarah Anderson",
-      imageUrl: "/placeholder.svg",
+      imageUrl: "https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     },
   ]);
 

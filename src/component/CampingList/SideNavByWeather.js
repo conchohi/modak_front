@@ -37,7 +37,7 @@ const SideNavByWeather = () => {
   return (
     <div className="w-4/5 md:w-full bg-white shadow-md p-5 md:p-3 border border-gray-300 rounded-xl">
       <div className="flex flex-col justify-center">
-      <div className="pb-3 border-b">       {/* 지역 섹션 토글 버튼 */}
+      <div className="pb-3 border-b mb-5">       {/* 지역 섹션 토글 버튼 */}
           <button
             className="text-lg font-semibold mb-2 flex justify-between items-center w-full text-left"
             onClick={() => setShowType(!showType)}
