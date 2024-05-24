@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 import BasicLayout from '../layouts/BasicLayout';
-import KakaoLoginComponent from '../component/member/KakaoLogin';
-import { KAKAO_AUTH_URL } from '../OAuth';
 import axios from 'axios';
 import ModalComponent from 'component/common/ModalComponent';
 import { useNavigate } from 'react-router-dom';

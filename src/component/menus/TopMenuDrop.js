@@ -13,7 +13,7 @@ function TopMenuDrop({onMouseOver, onMouseOut}){
                         <li className="text-center px-3 w-1/4 md:w-1/6">
                             <ul className="py-1 ">
                                 <li className="pb-1"><Link to="/camp/list">지역별</Link></li>
-                                <li><Link to="/camp/list">날씨별</Link></li>
+                                <li><Link to="/camp/listByWeather">날씨별</Link></li>
                             </ul>
                         </li>
                         <li className="text-center px-3 w-1/4 md:w-1/6">
