@@ -25,7 +25,7 @@ function TopMenuDrop({ onMouseOver, onMouseOut }) {
               <Link to="/camp/list">지역별</Link>
             </li>
             <li>
-              <Link to="/camp/list">유형별</Link>
+              <Link to="/camp/listByWeather">유형별</Link>
             </li>
           </ul>
         </li>
