@@ -6,9 +6,13 @@ import FavoriteList from "./list/FavoriteList";
 import MySideMenu from "./menus/MySideMenu";
 import { getUserData } from "api/userApi";
 import { getAccessToken } from "api/reissue";
+import ReviewList from "./list/ReviewList";
+import MyReviewList from "./list/MyReviewList";
+
 
 function MyPageComponent(){
     const [userData, setUserDate] = useState({favorites:[]});
+
     useEffect(()=>{
         getUserData().then(result=>{
             setUserDate(result)
@@ -42,15 +46,17 @@ function MyPageComponent(){
                     <div className="w-full flex flex-col border-b-2 py-5 border-gray-200 px-2">
                         <div className="mx-5 flex justify-between items-center pb-5">
                             <span className="font-bold text-2xl">'{userData.nickname}' 캠핑로그</span>
-                            <Link to="/myPage/camp-log" className="text-sm text-gray-400">전체 보기</Link>
+                            <Link className="text-sm text-gray-400">전체 보기</Link>
                         </div>
-
+                        <div>
+                            <MyReviewList/>
+                        </div>
 
                     </div>
                     <div className="w-full flex flex-col border-b-2 py-5 border-gray-200 px-2">
                         <div className="mx-5 flex justify-between items-center pb-5">
                             <span className="font-bold text-2xl">즐겨찾기</span>
-                            <Link to="/myPage/favorites" className="text-sm text-gray-400">전체 보기</Link>
+                            <Link className="text-sm text-gray-400">전체 보기</Link>
                         </div>
                         <FavoriteList favoriteList={userData.favorites}/>
 
