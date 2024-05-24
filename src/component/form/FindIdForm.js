@@ -4,9 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 function FindIdForm() {
     const [email, setEmail] = useState("");
-    const [certificationNumber, setCertificationNumber] = useState("");
     const [isCertificationSent, setIsCertificationSent] = useState(false);
-    const [isCertificationVerified, setIsCertificationVerified] = useState(false);
     const [message, setMessage] = useState("");
 
     const navigate = useNavigate();
@@ -15,37 +13,22 @@ function FindIdForm() {
         setEmail(e.target.value);
     };
 
-    const changeCertificationNumber = (e) => {
-        setCertificationNumber(e.target.value);
-    };
-
     const sendCertificationEmail = async () => {
         try {
-            const response = await axios.post("http://localhost:4040/api/v1/auth/send-certification-email", { email });
-            if (response.data.success) {
+            const response = await axios.post("http://localhost:4040/api/v1/auth/findId-email-certification", { email:email });
+            if (response.status==200) {
                 setIsCertificationSent(true);
-                setMessage("인증번호가 이메일로 전송되었습니다.");
-            } else {
-                setMessage("이메일 전송에 실패하였습니다. 다시 시도해주세요.");
-            }
+                setMessage("아이디가 이메일로 전송되었습니다.");
+            } 
         } catch (error) {
-            setMessage("서버 오류가 발생했습니다. 다시 시도해주세요.");
+            if(error.response.status==400){
+                setMessage(error.response.data.code);
+            } else{
+                setMessage("서버 오류가 발생했습니다. 다시 시도해주세요.");
+            }
         }
     };
 
-    const verifyCertificationNumber = async () => {
-        try {
-            const response = await axios.post("/api/verify-certification-number", { email, certificationNumber });
-            if (response.data.success) {
-                setIsCertificationVerified(true);
-                setMessage("인증번호가 확인되었습니다. 아이디를 이메일로 전송했습니다.");
-            } else {
-                setMessage("인증번호가 일치하지 않습니다. 다시 시도해주세요.");
-            }
-        } catch (error) {
-            setMessage("서버 오류가 발생했습니다. 다시 시도해주세요.");
-        }
-    };
 
     return (
         <div className="h-full w-full flex flex-col items-center justify-center">
@@ -63,40 +46,17 @@ function FindIdForm() {
                     onChange={changeEmail}
                     className="border-b border-gray-700 py-1 focus:border-b-2 focus:border-blue-950 transition-colors focus:outline-none"
                     placeholder="ex)abc123@example.com"
-                    disabled={isCertificationSent}
                 />
-                {isCertificationSent && (
-                    <>
-                        <label htmlFor="certificationNumber" className="mt-4 mb-4">인증번호</label>
-                        <input
-                            id="certificationNumber"
-                            name="certificationNumber"
-                            type="text"
-                            value={certificationNumber}
-                            onChange={changeCertificationNumber}
-                            className="border-b border-gray-700 py-1 focus:border-b-2 focus:border-blue-950 transition-colors focus:outline-none"
-                            placeholder="인증번호 4자리를 입력해주세요."
-                        />
-                    </>
-                )}
             </div>
             <div className="flex flex-wrap justify-between w-1/3">
-                {!isCertificationSent ? (
+    
                     <button
                         className="bg-[#FFC5C5] w-full p-3 mb-3 text-lg font-medium rounded-full"
                         onClick={sendCertificationEmail}
                     >
                         이메일 인증 요청
                     </button>
-                ) : (
-                    <button
-                        className="bg-[#FFC5C5] w-full p-3 mb-3 text-lg font-medium rounded-full"
-                        onClick={verifyCertificationNumber}
-                        disabled={isCertificationVerified}
-                    >
-                        인증번호 확인
-                    </button>
-                )}
+                
                 <button className="bg-stone-300 w-[48%] p-3 rounded-full" onClick={() => navigate("/login")}>
                     로그인
                 </button>
