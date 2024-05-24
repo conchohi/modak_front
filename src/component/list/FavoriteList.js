@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import MainCard from "../card/MainCard";
+import { Link } from "react-router-dom";
 
 function FavoriteList({favoriteList}){
 
@@ -9,7 +10,9 @@ function FavoriteList({favoriteList}){
                 {favoriteList.map((camp)=>{
                     return (
                         <div className="w-1/4 px-1 box-border">
-                            <MainCard camp={camp}/>
+                            <Link to={`/camp/${camp.campNo}`}>
+                                <MainCard camp={camp}/>
+                            </Link>
                         </div>
                     )
                 })}
