@@ -29,15 +29,14 @@ function BasicMenu(){
             // 홈으로 이동
             window.location.href = '/';
           } else {
-            // 로그아웃 실패 처리
-            alert('로그아웃 실패');
+            localStorage.removeItem('access');
+            
+            // 홈으로 이동
+            window.location.href = '/';
           }
         } catch (error) {
           console.error('로그아웃 오류', error);
-          localStorage.removeItem('access');
             
-          // 홈으로 이동
-          window.location.href = '/';
         }
       };
 
