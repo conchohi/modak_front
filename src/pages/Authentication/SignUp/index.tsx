@@ -187,7 +187,7 @@ export default function SignUp() {
         setEmail(value);
         if (!emailPattern.test(value)) {
             setEmailError(true);
-            setEmailMessage('이메일 형식을 지켜주세요');
+            setEmailMessage('이메일 형식이 아닙니다.');
         } else {
             setEmailError(false);
             setEmailMessage('');
