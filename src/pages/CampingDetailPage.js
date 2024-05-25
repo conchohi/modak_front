@@ -119,10 +119,13 @@ function CampingDetailPage() {
               <hr className="border-slate-950"></hr>
 
                 {/* 부대시설 */}
-                <Facilites facilities={campData.facilities}/>
+                <div className="py-2">
+                  <Facilites facilities={campData.facilities}/>
+                </div>
+                <hr className="border-slate-950 my-2"></hr>
 
                 {/* 날씨컴포넌트 */}
-                <div className="flex-col w-full my-5">
+                <div className="flex-col w-full my-5 py-2">
                     <div className="font-semibold text-lg">캠핑장 부근 날씨</div>
                     <div className="flex flex-col md:flex-row py-5 gap-2 items-center text-center">
                         <div className="py-2 border border-gray-400 rounded-md"><WeatherToday region={campData.region}/></div>
@@ -130,16 +133,16 @@ function CampingDetailPage() {
                     </div>
                 </div>
 
-                <hr className="border-slate-950"></hr>
+                <hr className="border-slate-950 my-2"></hr>
 
                 {/* 캠핑장소개 */}
-                <div className="flex-col w-full min-h-40 mx-2 my-4">
+                <div className="flex-col w-full min-h-40 mx-2 my-4 py-2">
                     <p className="w-full h-10 font-semibold text-lg">소개</p>
                     <p className="w-full">{campData.intro || campData.name + "은 " + campData.address + "에 위치한 캠핑장입니다. 많이 놀러오세요"}</p>
                 </div>
-
+                <hr className="border-slate-950 my-5"></hr>
                 {/* 위치 - 카카오맵API */}
-                <div className="flex-col w-full m-2">
+                <div className="flex-col w-full m-2 py-2">
                     <p className="w-full h-10 font-semibold text-lg">지도 위치</p>
                     <div className="w-full mb-10">
                         <StaticMap center={{lat:campData.lat, lng:campData.lon}} style={{width:"380px", height:"300px"}} 

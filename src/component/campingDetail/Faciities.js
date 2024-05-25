@@ -23,7 +23,7 @@ const  Facilites = ({facilities}) => {
             case "덤프스테이션" : icon = <FaDumpster size="30"/>; break;
         }
         return(
-            <div className="flex flex-col justify-center text-center" key={facility}>
+            <div className="flex flex-col justify-center text-center w-16" key={facility}>
             <span className="flex justify-center mb-1">{icon}</span>
             <span>{facility}</span>
             </div>
