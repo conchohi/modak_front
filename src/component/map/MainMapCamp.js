@@ -5,7 +5,7 @@ import MainCampList from "../list/MainCampList";
 import { getBest4, getBest4ByRegion } from "api/campApi";
 import { getAllWeather } from "api/weatherApi";
 import CalendarComponent from "component/Calendar";
-
+import "../../style/Calendar.css"
 
 export const MainMapCamp = () => {
     //날씨에 따라 map 색 정해주는 함수 (차후 설정)
