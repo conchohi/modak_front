@@ -5,7 +5,7 @@ import MainCampList from "../list/MainCampList";
 import { getBest4, getBest4ByRegion } from "api/campApi";
 import { getAllWeather } from "api/weatherApi";
 import CalendarComponent from "component/Calendar";
-
+import "../../style/Calendar.css"
 
 export const MainMapCamp = () => {
     //날씨에 따라 map 색 정해주는 함수 (차후 설정)
@@ -122,7 +122,7 @@ export const MainMapCamp = () => {
     return(
             <div className="w-full flex p-2 flex-col md:flex-row mb-10">
                 <div className="w-full md:w-1/2 flex items-center justify-center relative">
-                    <div className="absolute top-3 right-28">
+                    <div className="absolute top-3 right-6 w-1/4">
                         <CalendarComponent callbackFunction={setDate}/>
                     </div>
                     <div className="absolute bottom-3 right-6 flex flex-row border p-3 rounded-xl shadow-md">

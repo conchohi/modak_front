@@ -1,7 +1,4 @@
 import React from "react";
-import TopMenu from "../../component/menus/TopMenu";
-import BasicMenu from "../../component/menus/BasicMenu";
-import Footer from "../../component/footer/Footer";
 import NoticeSideNav from "./NoticeSideNav";
 import BasicLayout from "layouts/BasicLayout";
 

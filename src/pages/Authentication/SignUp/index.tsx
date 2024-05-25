@@ -10,8 +10,11 @@ import { ResponseDto } from 'api/response';
 import { ResponseCode } from 'types/enums';
 import InputBox from 'component/inputBox';
 import { ResponseBody } from 'types';
+import ModalComponent from 'component/common/ModalComponent';
 
 export default function SignUp() {
+    const [openModal, setOpenModal] = useState<boolean>(false);
+    const [message, setMessage] = useState<String>("");
 
     const idRef = useRef<HTMLInputElement | null>(null);
     const nicknameRef = useRef<HTMLInputElement | null>(null);
@@ -131,7 +134,8 @@ export default function SignUp() {
         if (code === ResponseCode.DATABASE_ERROR) alert('데이터베이스 오류입니다.');
         if (code !== ResponseCode.SUCCESS) return;
 
-        navigate('/login');
+        setMessage('회원가입 성공!')
+        setOpenModal(true);
     }
 
     const onIdChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
@@ -288,6 +292,7 @@ export default function SignUp() {
 
     return (
         <BasicLayout>
+            {openModal && <ModalComponent message={message} callbackFunction={()=>{navigate('/login')}}/>}
             <div id='sign-up-wrapper'>
                 <div className='sign-up-image'></div>
                 <div className='sign-up-container'>

@@ -16,7 +16,7 @@ function CampReviewComponent() {
   }, []);
 
   return (
-    <section className="w-full py-12 md:py-24 lg:py-32">
+    <section className="w-full py-6">
       <div className="container px-4 md:px-6 flex flex-col">
         <div className="space-y-4 text-center">
           <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">추천 캠프장 리뷰</h2>
@@ -31,12 +31,6 @@ function CampReviewComponent() {
           ))}
         </div>
         
-        {/* 리뷰 쓰기 버튼 */}
-        <div className="mt-8 flex justify-end">
-          <Link to="/write-review" className="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition-colors duration-300">
-            리뷰 쓰기
-          </Link>
-        </div>
       </div>
     </section>
   );

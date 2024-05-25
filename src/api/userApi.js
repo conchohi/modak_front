@@ -18,7 +18,7 @@ export const getUserData = async () => {
 export const modifyUserData = async (data) => {
   const token = localStorage.getItem('access');
 
-const response = await axios.put(`${prefix}`, data,{headers:{
+const response = await axios.patch(`${prefix}`, data,{headers:{
   'Content-Type': 'multipart/form-data', "access" : token
 }
 } )
