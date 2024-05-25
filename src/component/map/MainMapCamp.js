@@ -122,7 +122,7 @@ export const MainMapCamp = () => {
     return(
             <div className="w-full flex p-2 flex-col md:flex-row mb-10">
                 <div className="w-full md:w-1/2 flex items-center justify-center relative">
-                    <div className="absolute top-3 right-28">
+                    <div className="absolute top-3 right-6 w-1/4">
                         <CalendarComponent callbackFunction={setDate}/>
                     </div>
                     <div className="absolute bottom-3 right-6 flex flex-row border p-3 rounded-xl shadow-md">
