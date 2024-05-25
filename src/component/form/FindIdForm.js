@@ -51,16 +51,16 @@ function FindIdForm() {
             <div className="flex flex-wrap justify-between w-1/3">
     
                     <button
-                        className="bg-[#FFC5C5] w-full p-3 mb-3 text-lg font-medium rounded-full"
+                        className="bg-[#ffb13c] w-full p-3 mb-3 text-lg font-medium rounded-full hover:bg-[#ffc17f]"
                         onClick={sendCertificationEmail}
                     >
-                        이메일 인증 요청
+                        아이디 찾기 이메일 요청
                     </button>
                 
-                <button className="bg-stone-300 w-[48%] p-3 rounded-full" onClick={() => navigate("/login")}>
+                <button className="bg-[#c6c6c6] w-[48%] p-3 rounded-full hover:bg-[#e6e6e6]" onClick={() => navigate("/login")}>
                     로그인
                 </button>
-                <button className="bg-stone-300 w-[48%] p-3 rounded-full" onClick={() => navigate("/find/pwd")}>
+                <button className="bg-[#c6c6c6] w-[48%] p-3 rounded-full hover:bg-[#e6e6e6]" onClick={() => navigate("/find/pwd")}>
                     비밀번호 찾기
                 </button>
             </div>
