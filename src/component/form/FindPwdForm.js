@@ -31,9 +31,9 @@ function FindPwdForm({title, content, find, btn1, btn2}){
 
             </div>
             <div className="flex flex-wrap justify-between w-1/3">
-            <button className="bg-[#FFC5C5] w-full p-3 mb-3 text-lg font-medium rounded-full" onClick={findPwd}>비밀번호 찾기</button>
-            <button className="bg-stone-300 w-[48%] p-3 rounded-full" onClick={()=>{navigate("/login")}}>로그인</button>
-            <button className="bg-stone-300 w-[48%] p-3 rounded-full" onClick={()=>{navigate("/find/id")}}>아이디 찾기</button>
+            <button className="bg-[#ffb13c] hover:bg-[#ffc17f] w-full p-3 mb-3 text-lg font-medium rounded-full" onClick={findPwd}>비밀번호 찾기</button>
+            <button className="bg-[#c6c6c6] hover:bg-[#e6e6e6] w-[48%] p-3 rounded-full" onClick={()=>{navigate("/login")}}>로그인</button>
+            <button className="bg-[#c6c6c6] hover:bg-[#e6e6e6] w-[48%] p-3 rounded-full" onClick={()=>{navigate("/find/id")}}>아이디 찾기</button>
 
             </div>
         </div>
