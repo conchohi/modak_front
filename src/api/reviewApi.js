@@ -49,7 +49,7 @@ export const registerReview = async (write) =>{
 export const modifyReview = async (reviewNo,write) =>{
     const token = localStorage.getItem('access')
     try {
-        const response = await axios.put(`${prefix}/${reviewNo}`, write, {headers:{
+        const response = await axios.patch(`${prefix}/${reviewNo}`, write, {headers:{
             access : token
         }});
         return response.data;
