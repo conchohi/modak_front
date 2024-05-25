@@ -56,6 +56,7 @@ const ReviewModifyModal = ({reviewNo, close}) => {
     const handleDelete = ()=>{
         deleteReview(reviewNo).then(result=>{
             setMessage('리뷰 삭제 완료!')
+            setDeleteOpen(false)
            setIsOpen(true)
         }).catch(error=>{
             console.log(error)
