@@ -110,7 +110,7 @@ function CampingDetailPage() {
                         <p className="flex gap-2 items-center "><FaMapMarkerAlt color="#2291F2"/> {campData.address}</p>
                         <p className="flex gap-2 items-center text-gray-600"><IoIosCall color="#DB4B39"/>{campData.phone || "010-1234-5678"}</p>
                     </div>
-                    <Link to={campData.homePage}>
+                    <Link to={campData.homePage} target='_blank'>
                       <button className="w-1/4 absolute bottom-0 py-2 right-3 bg-blue-600 rounded-md text-white">홈페이지로 이동</button>
                     </Link>
                 </div>
