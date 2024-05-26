@@ -187,7 +187,7 @@ export default function SignUp() {
         setEmail(value);
         if (!emailPattern.test(value)) {
             setEmailError(true);
-            setEmailMessage('영문, 숫자 포함 8자 이상 입력해주세요.');
+            setEmailMessage('이메일 형식이 아닙니다.');
         } else {
             setEmailError(false);
             setEmailMessage('');
