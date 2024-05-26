@@ -1,24 +1,24 @@
-import axios from "axios";
-import latLon from "./latLon";
+import axios from "axios"
+import { API_SERVER_HOST } from "./campApi"
 
-const weather_api_key = "58aa078022868faa475bb02615907902"
-const url = "http://api.openweathermap.org/data/2.5/forecast/daily"
-const cnt = 7;
-const mode = "json"
-const lang = "kr"
-const unit = "metric"
+const prefix = `${API_SERVER_HOST}/api/weather`
 
-function checkLat(region){
-    return latLon[region].lat;
+export const getCurrentWeather = async (region) => {
+  const response = await axios.get(`${prefix}/now`,{params:{region : region}} )
+
+  return response.data
+
 }
-function checkLon(region){
-    return latLon[region].lon;
-}
-
-export const getWeatherData = async (region) => {
-    let lat = checkLat(region);
-    let lon = checkLon(region);
-    const response = await axios.get(`${url}?lat=${lat}&lon=${lon}&cnt=${cnt}&appid=${weather_api_key}&mode=${mode}&lang=${lang}&units=${unit}`);
-
+export const getWeeklyWeather = async (region) => {
+    const response = await axios.get(`${prefix}/week`,{params:{region : region}} )
+  
     return response.data
-}
+  
+  }
+
+  export const getAllWeather = async (date) => {
+    const response = await axios.get(`${prefix}/all`,{params:{date : date}} )
+  
+    return response.data
+  
+  }

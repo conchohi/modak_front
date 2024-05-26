@@ -1,7 +1,7 @@
-import React, {useState, useEffect} from "react";
+import React from "react";
 import WeatherToday from "./WeatherToday";
 import WeatherWeek from "./WeatherWeek";
-function WeatherInfo({weatherData}){
+function WeatherInfo({region}){
     /*
         weatherData = {
             region : , today : {highTemp: , lowTemp, description, temp}, 
@@ -10,9 +10,9 @@ function WeatherInfo({weatherData}){
     */
     return(
         <>
-            <WeatherToday region= {weatherData.region} data={weatherData.today}/>
+            <WeatherToday region= {region}/>
             <hr/>
-            <WeatherWeek data={weatherData.week}/>
+            <WeatherWeek region={region}/>
         </>
     )
 }

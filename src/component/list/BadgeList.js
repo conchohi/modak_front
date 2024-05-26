@@ -8,7 +8,7 @@ function BadgeList(){
         <div className="flex flex-col">
             <div className="flex justify-between mb-5 items-center">
                 <span className="font-semibold">나의 활동배지</span>
-                <Link to="/myPage/badge" className="text-blue-600 text-sm flex">전체보기 <FaArrowRight className="ms-3" size="14"/></Link>
+                <Link to="#" className="text-blue-600 text-sm flex">전체보기 <FaArrowRight className="ms-3" size="14"/></Link>
             </div>
             <div className="flex">
                 <div className="w-1/3"><BadgeCard badgeCode="1" badgeName="캠프파이어의 왕"/> </div>

@@ -11,11 +11,7 @@
     outline: 0;
 }
 
-.svg-map__location:hover {
-    fill: red;
-}
-
 .svg-map__location:focus{
 
-    fill: #777;
+    fill: #c7224b;
 }

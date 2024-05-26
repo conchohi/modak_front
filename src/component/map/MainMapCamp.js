@@ -2,120 +2,91 @@ import { useEffect, useState } from "react";
 import { SouthKoreaSvgMap } from "./SouthKoreaSvgMap";
 import WeatherInfo from "../weather/WeatherInfo";
 import MainCampList from "../list/MainCampList";
-
-const WeatherModal = ({ tooltipStyle, weatherData}) => {
-    return (
-        <div className="w-72 h-72 flex flex-col border border-solid border-black fixed rounded-3xl min-w-20 p-3 bg-white text-black" style={tooltipStyle}>
-            <WeatherInfo weatherData={weatherData}/> {/*특정 지역 날씨 데이터 */}
-        </div>
-    )
-
-};
+import { getBest4, getBest4ByRegion } from "api/campApi";
+import { getAllWeather } from "api/weatherApi";
+import CalendarComponent from "component/Calendar";
+import "../../style/Calendar.css"
 
 export const MainMapCamp = () => {
     //날씨에 따라 map 색 정해주는 함수 (차후 설정)
     const setColorByWeather = (weather) => {
-        if (weather === "구름") return "#F1F1F1";
-        if (weather === "햇빛") return "#C1E5DF";
-        if (weather === "눈") return "#D9EBE8";
+        if (weather === "맑음") return "#fffeb3";
+        if (weather === "흐림") return " #e0e0de";
+        if (weather === "구름") return "#709dc2";
+        if (weather === "비") return "#5179fc";
+        if (weather === "박무") return "#d5c9dd";
         else return "#ebfffd";
     };
     
     const [tooltipStyle, setTooltipStyle] = useState({});
     const [mapData, setMapData] = useState({});
     const [isOpen, setIsOpen] = useState(false);
+    const [bestCampData, setBestCampData] = useState([
 
-    //지역 날씨 데이터
-    const [weatherData, setWeatherData] = useState({region : "", today : {temp : "", highTemp : "", lowTemp:"", description:"", date:""},
-    week : []});
-
+    ])
     //전체 날씨 데이터
-    const [allWeatherData, setAllWeatherData] = useState([{ locale: "부산광역시", variable: "눈" },
-        { locale: "대구광역시", variable: "눈" },
-        { locale: "대전광역시", variable: "눈" },
-        { locale: "강원도", variable: "비" },
-        { locale: "광주광역시", variable: "햇빛" },
-        { locale: "경기도", variable: "비" },
-        { locale: "인천광역시", variable: "구름" },
-        { locale: "제주특별자치도", variable: "눈" },
-        { locale: "충청북도", variable: "햇빛" },
-        { locale: "경상북도", variable: "눈" },
-        { locale: "전라북도", variable: "햇빛" },
-        { locale: "세종특별자치시", variable: "눈" },
-        { locale: "충청남도", variable: "햇빛" },
-        { locale: "경상남도", variable: "눈" },
-        { locale: "전라남도", variable: "구름" },
-        { locale: "울산광역시", variable: "구름" },
-        { locale: "서울특별시", variable: "구름" }]);
-
-    //해당 지역 캠핑장 데이터
-    const [bestCampData ,setBestCampData] = useState([{name : "캠핌장1", location : "테스트1"},
-    {name : "캠핌장2", location : "테스트2"},
-    {name : "캠핌장3", location : "테스트3"},
-    {name : "캠핌장4", location : "테스트4"}]);
+    const [allWeatherData, setAllWeatherData] = useState([]);
 
     //지역 선택 시 locale 변경, hover 시 hoverLocale 변경
     const [locale, setLocale] = useState();
     const [hoverLocale, setHoverLocale] = useState();
+    const [date, setDate] = useState();
 
-    useEffect(()=>{ //해당 컴포넌트 처음 불러올 때 api에서 전체 날씨 정보 가져오고, 전체의 대한 캠핑장 데이터 가져옴
-        //차후 api로 불러와서 전체 weatherData와 전체 BestCampData 넣어줌
-        // setAllWeatherData();
-        // setBestCampData();
+    useEffect(()=>{ 
+        const currentDate = new Date();
+        const year = currentDate.getFullYear();
+        const month = String(currentDate.getMonth() + 1).padStart(2, '0'); // 월은 0부터 시작하므로 1을 더함
+        const day = String(currentDate.getDate()).padStart(2, '0');
+        const date = `${year}-${month}-${day}`;
+        setDate(date);
+
+        getBest4(date).then(result=>{
+            setBestCampData(result.data);
+        }).catch(error=>{
+
+        })
+        getAllWeather(date).then(result=>{
+            setAllWeatherData(result.data);
+        }).catch(error=>{
+
+        })
     }, [])
 
+    useEffect(()=>{
+        getBest4(date).then(result=>{
+            setBestCampData(result.data);
+        }).catch(error=>{
+
+        })
+        getAllWeather(date).then(result=>{
+            setAllWeatherData(result.data);
+        }).catch(error=>{
+
+        })
+    }, [date])
+
     useEffect(() => {//전체 날씨 데이터 변경 시 {지역 : 날씨} 형태로 변환 후 MapData 저장
-        const items = allWeatherData.reduce((acc, item) => {
-            return Object.assign(Object.assign({}, acc), { [item.locale]: item.variable });
-        }, {});
-        setMapData(items);
+        if(allWeatherData.length > 0){
+            const items = allWeatherData.reduce((acc, item) => {
+                acc[item.region] = item.weather;
+                return acc;
+            }, {});
+            setMapData(items);
+        }
     }, [allWeatherData]);
+
 
     useEffect(() => {//지역 클릭 시 locale이 해당 지역 id로 변경할 때 자동으로 BestCampData 변경
         // axios로 setBestCampData() 변경 axios.get("url", locale(차후 지역 번호로 변경))
-        if(locale === "gangwon"){
-            setBestCampData([{name : "강원도 캠핌장1", location : "변경테스트1"},
-            {name : "강원도 캠핌장2", location : "변경테스트2"},
-            {name : "강원도 캠핌장3", location : "변경테스트3"},
-            {name : "강원도 캠핌장4", location : "변경테스트4"}
-            ])
+        if(locale != null){
+            getBest4ByRegion(locale).then(result=>{
+                setBestCampData(result.data);
+            }).catch(error=>{
+
+            })
         }
-        
     }, [locale]);
 
-    useEffect(()=>{
-        //axios로 setWeather() 처리 -> 특정 날씨 정보 제공 axious.get("url", hoverLocale)
-        /*
-            setWeather({
-                region : , today : {highTemp: , lowTemp, description, temp}, 
-                week : [{highTemp : , lowTemp : , description : , date :},  {}, {}, ..., {} ]
-            })
-        
-        */
-        if(hoverLocale === "gangwon"){
-            setWeatherData(
-                {region : "강원도", today : {temp : "18℃", highTemp : "24℃", lowTemp:"14℃", description:"맑음"},
-                 week : [{dow:"화", highTemp : 24, lowTemp : 14, description: "맑음"}, 
-                {dow:"수",highTemp : 25, lowTemp : 17, description: "맑음"},
-                {dow:"목",highTemp : 25, lowTemp : 18, description: "구름"},
-                {dow:"금",highTemp : 27, lowTemp : 21, description: "흐림"},
-                {dow:"토",highTemp : 26, lowTemp : 20, description: "맑음"},
-                {dow:"일",highTemp : 30, lowTemp : 22, description: "햇빛"},
-                {dow:"월",highTemp : 24, lowTemp : 12, description: "비"}
-            ]})
-        } else{
-            setWeatherData(
-                {region : "부산", today : {temp : "22℃", highTemp : "27℃", lowTemp:"17℃", description:"햇빛"},
-                week : [{dow:"화", highTemp : 27, lowTemp : 17, description: "햇빛"}, 
-                {dow:"수",highTemp : 25, lowTemp : 17, description: "맑음"},
-                {dow:"목",highTemp : 25, lowTemp : 18, description: "구름"},
-                {dow:"금",highTemp : 27, lowTemp : 21, description: "흐림"},
-                {dow:"토",highTemp : 26, lowTemp : 20, description: "맑음"},
-                {dow:"일",highTemp : 30, lowTemp : 22, description: "햇빛"},
-                {dow:"월",highTemp : 24, lowTemp : 12, description: "비"}
-            ]})
-        }
-    }, [hoverLocale])
 
     const handleLocationMouseOver = (event) => {
         let current = event.target.id;
@@ -143,18 +114,31 @@ export const MainMapCamp = () => {
             left: event.clientX + 30,
         };
         setTooltipStyle(tooltipStyle);
-        //setLocale(event.target.id) 로 지역 id 가져오기
         let current = event.target.id;
         setLocale(current);
          
     };
 
     return(
-            <div className="w-full flex p-2 flex-col md:flex-row">
-                <div className="w-full md:w-1/2 flex items-center justify-center bg-gray-100">
+            <div className="w-full flex p-2 flex-col md:flex-row mb-10">
+                <div className="w-full md:w-1/2 flex items-center justify-center relative">
+                    <div className="absolute top-3 right-6 w-1/4">
+                        <CalendarComponent callbackFunction={setDate}/>
+                    </div>
+                    <div className="absolute bottom-3 right-6 flex flex-row border p-3 rounded-xl shadow-md">
+                            <div className="w-11 h-12 flex flex-col justify-center items-center text-center text-sm"><div className="h-6 w-6 rounded-full bg-[#fffeb3]"></div>맑음</div>
+                            <div className="w-11 h-12 flex flex-col justify-center items-center text-center text-sm"><div className="h-6 w-6 rounded-full bg-[#e0e0de]"></div>흐림</div>
+                            <div className="w-11 h-12 flex flex-col justify-center items-center text-center text-sm"><div className="h-6 w-6 rounded-full bg-[#709dc2]"></div>구름</div>
+                            <div className="w-11 h-12 flex flex-col justify-center items-center text-center text-sm"><div className="h-6 w-6 rounded-full bg-[#d5c9dd]"></div>안개</div>
+                            <div className="w-11 h-12 flex flex-col justify-center items-center text-center text-sm"><div className="h-6 w-6 rounded-full bg-[#5179fc]"></div>비</div>
+                            <div className="w-11 h-12 flex flex-col justify-center items-center text-center text-sm"><div className="h-6 w-6 rounded-full bg-[#ebfffd]"></div>눈</div>
+                    </div>
                     <div className="w-3/5 ">
+                        
                         <SouthKoreaSvgMap data={mapData} setColorByCount={setColorByWeather} onLocationMouseOver={handleLocationMouseOver} onLocationMouseOut={handleLocationMouseOut} onLocationMouseMove= {handleLocationMouseMove} onLocationClick={handleLocationClick}/>
-                        {isOpen && <WeatherModal tooltipStyle={tooltipStyle} weatherData={weatherData}/>}
+                        {isOpen &&  <div className="w-72 h-72 flex flex-col border border-solid border-black fixed rounded-3xl min-w-20 p-3 bg-white text-black" style={tooltipStyle}>
+                        <WeatherInfo region={hoverLocale}/> {/*특정 지역 날씨 데이터 */}
+        </               div>}
                     </div>
                 </div>
                 <div className="mt-5 md:mt-0 w-full md:w-1/2">
