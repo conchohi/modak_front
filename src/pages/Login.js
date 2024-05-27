@@ -64,7 +64,9 @@ const Login = () => {
             let formData= new FormData();
             formData.append('username', id);
             formData.append('password',password);
-            const response = await axios.post('http://localhost:4040/login', formData);
+            const response = await axios.post('http://localhost:4040/login', formData,{
+                withCredentials: true // 자격 증명을 포함하여 요청
+              });
             // 로그인 성공 처리
             setMessage("로그인 성공!")
             setIsOpen(true)
