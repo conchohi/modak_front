@@ -44,7 +44,7 @@ const SearchBar = () => {
           >
             <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
           </svg>
-          <span className=" text-sm md:text-base font-semibold">검색</span>
+          <span className="hidden lg:block text-sm md:text-base font-semibold">검색</span>
         </button>
       </div>
     </div>
