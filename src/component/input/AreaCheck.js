@@ -78,14 +78,16 @@ const regions = [{
 function AreaCheck() {
     //선택된 지역의 값 설정
     const [region, setRegion] = useState("");
+    const [viewRegion, setViewRegion] = useState("");
 
     //드롭다운 여부값 설정
     const [isOpen, setIsOpen] = useState(false);
     const navigate = useNavigate();
 
     //클릭될 경우 selectedValue 값에 클릭된 값 설정
-    const handleItemClick = (value) => {
-        setRegion(value);
+    const handleItemClick = (e) => {
+        setViewRegion(e.target.getAttribute('data-name'))
+        setRegion(e.target.id);
         setIsOpen(!isOpen); 
     };
 
@@ -103,7 +105,7 @@ function AreaCheck() {
             {/* 선택한 값이 보여지는 부분 */}
             <div className="flex items-center justify-between bg-white border border-black rounded-md shadow-sm px-4 py-2
             cursor-pointer" onClick={handleDropdownClick} >
-                <span>{region || '전체'}</span>
+                <span>{viewRegion || '전체'}</span>
                 <svg
                     className="h-3 w-3 text-gray-400"
                     fill="none"
@@ -132,7 +134,7 @@ function AreaCheck() {
                      </li>
                     {regions.map(region=>{
                         return(
-                            <li onClick={() => handleItemClick(region.id)}
+                            <li onClick={handleItemClick} id={region.id} data-name={region.name}
                             className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
                         >
                             {region.name}
