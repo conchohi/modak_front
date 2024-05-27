@@ -47,9 +47,9 @@ function BasicMenu(){
 
     return(
         <nav className="flex w-full items-center mb-10">
-            <div className="mt-6">
+            <div className="mt-6  ms-12">
                 <Link to={"/"}>
-                    <img className="w-44 ms-24" src="/img/logo.png" alt="logo image"/>
+                    <img className="w-44" src="/img/logo.png" alt="logo image"/>
                 </Link>
             </div>
             
