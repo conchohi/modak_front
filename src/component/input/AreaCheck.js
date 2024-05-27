@@ -126,8 +126,8 @@ function AreaCheck() {
             {isOpen && (
             <div className="absolute z-10 mt-2 w-28 bg-white border border-gray-300 rounded-md shadow-lg">
                 <ul className='overflow-y-scroll h-40'>
-                    <li
-                        onClick={() => handleItemClick('')}
+                    <li id="" data-name="전체"
+                        onClick={handleItemClick}
                         className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
                     >
                         전체
