@@ -99,6 +99,11 @@
 <a href="https://www.youtube.com/watch?v=48yzR_39_cI" target="_blank"><img width="429" alt="logo" src="https://github.com/conchohi/modak_front/assets/156064008/c556b809-30e3-4f49-96ba-1fb62de77532">
 </a>
 
+<h3>발표 자료</h3>
+<a href="https://www.canva.com/design/DAGFvzUHaxY/KeJx6AEfqk7MH2kHC_Zfjg/edit?utm_content=DAGFvzUHaxY&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton">
+<img width="805" alt="발표자료" src="https://github.com/conchohi/modak_front/assets/156064008/0da397a4-21d6-4abd-96dd-3bd48d239346">
+</a>
+
 ## 🎨 추후 개선 사항
 1. 회원 탈퇴 기능 추가 <br/>
 &nbsp; -> 즐겨찾기, 리뷰 외래키 제약 조건을 고려하여 기능 구현 필요. <br/><br/>
