@@ -96,7 +96,7 @@
 ## ⌨ 주요 기능 시연
 <h3>YouTube 시연 영상</h3>
 <h4>https://youtu.be/48yzR_39_cI?feature=shared</h4>
-<a href="https://www.youtube.com/watch?v=48yzR_39_cI" target="_blank"><img src="https://i.ytimg.com/vi/48yzR_39_cI/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDVHkKygWCqsrYcodWfl-MjVlvNfA" alt="모닥"/></a>
+<a href="https://www.youtube.com/watch?v=48yzR_39_cI" target="_blank">![logo](https://github.com/conchohi/modak_backend/assets/156064008/77fd10fe-1a88-4dc7-be89-c0b11e7a9666)</a>
 
 ## 🎨 추후 개선 사항
 1. 회원 탈퇴 기능 추가 <br/>
