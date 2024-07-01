@@ -32,7 +32,7 @@
 |[🔗](https://github.com/dmsp0)|[🔗](https://github.com/kimpurple0520)|[🔗](https://github.com/noonayasalido)|[🔗](https://github.com/ParkJeYong)|[🔗](https://github.com/conchohi)|
 
 <br/>
-#### 👨‍👩‍👧‍👦 **팀 규칙**
+## 👨‍👩‍👧‍👦 팀 규칙
 
 1. **지각 결석시 미리 연락** 
 2. **남는 요일 : 소통하면서 조정**
